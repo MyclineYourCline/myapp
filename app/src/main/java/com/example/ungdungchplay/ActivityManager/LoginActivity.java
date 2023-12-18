@@ -21,8 +21,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btn_login;
     private LoginPresenter presenter;
     private Intent intent;
-    private String anme;
-    // cachung dep trai qua ca
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
