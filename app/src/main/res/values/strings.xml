@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ResTof</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="des">Welcome to ResTof</string>
+    <string name="desM">Tích hợp mọi quy trình quản lý cửa hàng vào tay bạn với ứng dụng Quản lý Cửa hàng Offline. Đơn giản, hiệu quả, và sẵn sàng giúp doanh nghiệp của bạn phát triển mọi nơi, mọi lúc.</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account">Already have an account ?</string>
+    <string name="login_here">login here !</string>
+    <string name="repass_word">Repass word</string>
+    <string name="password">Password</string>
+    <string name="account_name">Account name</string>
+    <string name="user_name">User name</string>
+    <string name="create_new_account">Create New Account</string>
+
+</resources>
