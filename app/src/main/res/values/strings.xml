@@ -9,8 +9,9 @@
     <string name="login_here">login here !</string>
     <string name="repass_word">Repass word</string>
     <string name="password">Password</string>
-    <string name="account_name">Account name</string>
+    <string name="account_name">Account name (numberPhone)</string>
     <string name="user_name">User name</string>
     <string name="create_new_account">Create New Account</string>
+    <string name="message">message</string>
 
 </resources>

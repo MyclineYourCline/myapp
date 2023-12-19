@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +34,7 @@ public class ScreenActivity extends AppCompatActivity implements ScreenInterFace
     public static final int pagerIndex1 =0;
     public static final int pagerIndex2 =1;
     public static final int pagerIndex3 =2;
+    public static final String SHARE_NAME = "ResTof";
 
 
     @Override
@@ -55,8 +58,9 @@ public class ScreenActivity extends AppCompatActivity implements ScreenInterFace
         //
         txt_next.setOnClickListener(this);
         txt_skip.setOnClickListener(this);
-        screenPresenter.checkLogin();
         //
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARE_NAME, MODE_PRIVATE);
+        screenPresenter.checkActive(sharedPreferences.getBoolean("active", false));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -110,8 +114,15 @@ public class ScreenActivity extends AppCompatActivity implements ScreenInterFace
             viewPager.setCurrentItem(viewPager.getCurrentItem() +1);
         }
     }
-
     @Override
-    public void checkLogin() {
+    public void activeSuccess() {
+        d("ca" + "chung", "activeSuccess: ");
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
+    @Override
+    public void activeErr() {
+        d("ca" + "chung", "activeErr: ");
+    }
+
 }

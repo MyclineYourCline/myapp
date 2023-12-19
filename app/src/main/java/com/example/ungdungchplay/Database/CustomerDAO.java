@@ -30,7 +30,6 @@ public class CustomerDAO {
     public List<Customer> get (String sql, String...args){
         List<Customer> list = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql,args);
-        cursor.moveToFirst();
         while (cursor.moveToNext()){
             Customer item = new Customer();
             item.setId(cursor.getInt(cursor.getColumnIndex("id")));
@@ -40,6 +39,7 @@ public class CustomerDAO {
             item.setAddress(cursor.getString(cursor.getColumnIndex("address")));
             list.add(item);
         }
+        cursor.close();
         return list;
     }
     public List<Customer> getALL (){

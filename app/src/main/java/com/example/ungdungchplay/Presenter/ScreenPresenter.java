@@ -1,5 +1,9 @@
 package com.example.ungdungchplay.Presenter;
 
+import android.content.SharedPreferences;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.ungdungchplay.InterfaceManager.ScreenInterFace;
 
 public class ScreenPresenter {
@@ -15,7 +19,9 @@ public class ScreenPresenter {
    public void next(){
         screenInterFace.next();
     }
-   public void checkLogin(){
-        screenInterFace.checkLogin();
-    }
+   public void checkActive (boolean active){
+        if (active) screenInterFace.activeSuccess();
+        else screenInterFace.activeErr();
+
+   }
 }

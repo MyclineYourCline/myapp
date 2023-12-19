@@ -1,6 +1,8 @@
 package com.example.ungdungchplay.ModelManager;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     //name
     //id
     //adr
@@ -8,18 +10,32 @@ public class User {
     //numberp
     //birth
     private int id, avatar;
-    private String name, address, phone, birth;
+    private String name, address, phone, birth,password;
 
     public User() {
     }
 
-    public User(int id, int avatar, String name, String address, String phone, String birth) {
+    public User(int id, int avatar, String name, String address, String phone, String birth, String password) {
         this.id = id;
         this.avatar = avatar;
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.birth = birth;
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", avatar=" + avatar +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birth='" + birth + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
     public int getId() {
@@ -44,6 +60,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAddress() {

@@ -1,6 +1,10 @@
 package com.example.ungdungchplay.Database;
 
 public class DbStruct {
+    public static final int INSERT_ERR = -1;
+    public static final int DELETE_ERR = 0;
+    public static final int UPDATE_ERR = 0;
+
     public static final String CREATE_TABLE_USER = "" +
             "create table user (" +
             "userID INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -8,6 +12,7 @@ public class DbStruct {
             "address TEXT," +
             "phone TEXT," +
             "birth DATE," +
+            "password TEXT," +
             "avatar INTEGER)";
     public static final String CREATE_TABLE_ROOM = "" +
             "create table room (" +
