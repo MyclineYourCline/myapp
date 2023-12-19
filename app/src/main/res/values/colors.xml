@@ -11,4 +11,6 @@
     <color name="btn_p">#6b9393</color>
     <color name="btn_login">#4cd3a1</color>
     <color name="btn">#D30b26</color>
+    <color name="error">#D30F2A</color>
+    <color name="success">#4CAF50</color>
 </resources>

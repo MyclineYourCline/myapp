@@ -2,5 +2,5 @@ package com.example.ungdungchplay.InterfaceManager;
 
 public interface RegisterInterface {
      void registerSuccess();
-     void RegisterError();
+     void RegisterError(String message);
 }
