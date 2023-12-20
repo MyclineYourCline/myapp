@@ -8,6 +8,7 @@
     tools:context=".ActivityManager.ScreenActivity">
     <TextView
         android:text="Skip"
+        android:stateListAnimator="@animator/btn_click_animator"
         android:textStyle="bold"
         android:id="@+id/Screen_txtSkip"
         android:layout_alignParentEnd="true"
@@ -42,6 +43,7 @@
             android:textColor="@color/purple_500"
             android:layout_centerVertical="true"
             android:padding="20dp"
+            android:stateListAnimator="@animator/btn_click_animator"
             android:text="Next"/>
         <ImageView
             android:id="@+id/Screen_imgNext"

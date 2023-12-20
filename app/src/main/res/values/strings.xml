@@ -13,5 +13,6 @@
     <string name="user_name">User name</string>
     <string name="create_new_account">Create New Account</string>
     <string name="message">message</string>
+    <string name="get_started">Get started</string>
 
 </resources>

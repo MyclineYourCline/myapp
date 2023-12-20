@@ -9,20 +9,19 @@
         android:src="@drawable/nen3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="100dp"
-        app:cardCornerRadius="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content">
         <Button
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="100dp"
             android:id="@+id/Screen3_btnStart"
             android:textColor="@color/white"
-            android:text="Get started"
-            android:layout_width="300dp"
+            android:text="@string/get_started"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="40dp"
             android:fontFamily="serif"
-            android:background="@color/btn"
-            android:layout_height="wrap_content"/>
-    </androidx.cardview.widget.CardView>
+            android:elevation="10dp"
+            android:stateListAnimator="@animator/btn_click_animator"
+            android:background="@drawable/custom_btn_start"
+            android:layout_height="50dp"/>
 </RelativeLayout>

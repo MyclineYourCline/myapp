@@ -35,7 +35,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         sharedPreferences = getSharedPreferences(ScreenActivity.SHARE_NAME,MODE_PRIVATE);
         editor = sharedPreferences.edit();
         unitUI();
+        getActive();
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        txt_message.setVisibility(View.GONE);
+    }
+
     private void unitUI(){
         presenter = new LoginPresenter(this, this);
         edt_account = findViewById(R.id.Login_edtAccount);
@@ -51,8 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txt_forgotPass.setOnClickListener(this);
         getDataForRegister();
         //
-        getActive();
-
+        txt_message.setVisibility(View.GONE);
     }
     private void getActive (){
         boolean active = sharedPreferences.getBoolean(LoginActivity.ACTIVE_LOGIN,false);
@@ -66,13 +73,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             String password = sharedPreferences.getString("password","");
             edt_account.setText(account);
             edt_passWord.setText(password);
-            cb_remember.setChecked(true);
+            if (account.length() != 0) cb_remember.setChecked(true);
         return;
         }
         User user = (User) bundle.getSerializable("user");
         edt_account.setText(user.getPhone());
         edt_passWord.setText(user.getPassword());
-        cb_remember.setChecked(false);
     }
 
     @Override
@@ -118,15 +124,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivity(intent);
         isRemember();
     }
-    private void isRemember(){
-        if (cb_remember.isChecked()){
-            editor.putString("account",edt_account.getText().toString().trim());
-            editor.putString("password",edt_passWord.getText().toString().trim());
+    private void isRemember() {
+        if (cb_remember.isChecked()) {
+            editor.putString("account", edt_account.getText().toString().trim());
+            editor.putString("password", edt_passWord.getText().toString().trim());
             editor.apply();
-        }
-        else{
+        } else {
             editor.putString("account","");
-            editor.putString("password","");
+            editor.putString("password", " ");
             editor.apply();
         }
     }
