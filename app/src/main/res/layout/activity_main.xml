@@ -13,7 +13,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/Main_btn_navigation"
         android:layout_alignParentBottom="true"
-        android:background="@color/btn_nav"
+        android:background="@color/white"
         app:menu="@menu/main_nav"
         app:itemIconTint="@color/custom_nav_item"
         app:itemTextColor="@color/custom_nav_item"
