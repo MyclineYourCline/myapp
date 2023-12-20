@@ -4,6 +4,11 @@ public class DbStruct {
     public static final int INSERT_ERR = -1;
     public static final int DELETE_ERR = 0;
     public static final int UPDATE_ERR = 0;
+    public static final int ERR = 0;
+    public static final int ITEM_CLICK = 0;
+    public static final int ITEM_LONG_CLICK = 1;
+    public static final String MESSAGE_ERR = "Data error";
+
 
     public static final String CREATE_TABLE_USER = "" +
             "create table user (" +

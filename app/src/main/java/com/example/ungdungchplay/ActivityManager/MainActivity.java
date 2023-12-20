@@ -8,14 +8,16 @@ import androidx.viewpager.widget.ViewPager;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.ungdungchplay.Database.SqlOpenHelper;
 import com.example.ungdungchplay.R;
 import com.example.ungdungchplay.ViewPagerManager.ViewPagerAdapterHome;
 import com.example.ungdungchplay.ViewPagerManager.ViewPagerAdapterScreen;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ViewPagerAdapterHome viewPagerAdapterHome;
     private ViewPager viewPager;
     private BottomNavigationView navigationView;
@@ -69,5 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
