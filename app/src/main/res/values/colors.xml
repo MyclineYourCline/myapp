@@ -13,7 +13,4 @@
     <color name="btn">#D30b26</color>
     <color name="error">#D30F2A</color>
     <color name="success">#4CAF50</color>
-    <color name="btn_nav">#E6E8E6</color>
-    <color name="btn_statedC">#F44336</color>
-    <color name="hover">#575C57</color>
 </resources>
