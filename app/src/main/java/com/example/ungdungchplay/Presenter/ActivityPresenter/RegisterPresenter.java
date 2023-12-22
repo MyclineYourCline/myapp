@@ -1,16 +1,14 @@
-package com.example.ungdungchplay.Presenter;
+package com.example.ungdungchplay.Presenter.ActivityPresenter;
 
 import static android.util.Log.d;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.example.ungdungchplay.Database.DbStruct;
 import com.example.ungdungchplay.Database.UserDAO;
-import com.example.ungdungchplay.InterfaceManager.RegisterInterface;
+import com.example.ungdungchplay.InterfaceManager.ActivityInterface.RegisterInterface;
 import com.example.ungdungchplay.ModelManager.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterPresenter {

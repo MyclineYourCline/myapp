@@ -1,4 +1,4 @@
-package com.example.ungdungchplay.InterfaceManager;
+package com.example.ungdungchplay.InterfaceManager.ActivityInterface;
 
 public interface ScreenInterFace {
     void skip();

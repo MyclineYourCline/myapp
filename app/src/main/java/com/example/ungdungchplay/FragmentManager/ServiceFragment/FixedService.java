@@ -1,4 +1,5 @@
-package com.example.ungdungchplay.FragmentManager;
+
+package com.example.ungdungchplay.FragmentManager.ServiceFragment;
 
 import android.os.Bundle;
 
@@ -10,11 +11,11 @@ import android.view.ViewGroup;
 
 import com.example.ungdungchplay.R;
 
-public class ScreenFragment1 extends Fragment {
+public class FixedService extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_screen1, container, false);
+        return inflater.inflate(R.layout.fragment_fixed_service, container, false);
     }
 }

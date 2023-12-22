@@ -1,4 +1,4 @@
-package com.example.ungdungchplay.InterfaceManager;
+package com.example.ungdungchplay.InterfaceManager.SendData;
 
 import com.example.ungdungchplay.ModelManager.Room;
 

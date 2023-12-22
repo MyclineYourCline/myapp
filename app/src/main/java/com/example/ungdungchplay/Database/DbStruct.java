@@ -48,7 +48,10 @@ public class DbStruct {
             "create table service (" +
             "serviceID INTEGER PRIMARY KEY AUTOINCREMENT ," +
             "name TEXT," +
+            "type INTEGER," +
+            "count INTEGER," +
             "price INTEGER," +
+            "imageUri TEXT," +
             "description TEXT)";
     public static final String CREATE_TABLE_detailSERVICE = "" +
             "create table serviceDetail (" +

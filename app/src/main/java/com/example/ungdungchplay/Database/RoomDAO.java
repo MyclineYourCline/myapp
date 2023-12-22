@@ -1,5 +1,7 @@
 package com.example.ungdungchplay.Database;
 
+import static android.util.Log.d;
+
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
@@ -26,30 +28,13 @@ public class RoomDAO {
     public List<Room> get(String sql, String... args) {
         List<Room> list = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql, args);
-
-        // Kiểm tra Cursor trước khi truy cập dữ liệu
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
+            while (cursor.moveToNext()) {
                 Room room = new Room();
-
-                // Kiểm tra sự tồn tại của cột trước khi đọc giá trị
-                int idColumnIndex = cursor.getColumnIndex("id");
-                int nameColumnIndex = cursor.getColumnIndex("name");
-
-                if (idColumnIndex != -1) {
-                    room.setId(cursor.getInt(idColumnIndex));
-                }
-
-                if (nameColumnIndex != -1) {
-                    room.setName(cursor.getString(nameColumnIndex));
-                }
-
+                room.setId(cursor.getInt(cursor.getColumnIndex("roomID")));
+                room.setName(cursor.getString(cursor.getColumnIndex("name")));
                 list.add(room);
-            } while (cursor.moveToNext());
-
+            }
             cursor.close();
-        }
-
         return list;
     }
 
@@ -66,13 +51,13 @@ public class RoomDAO {
     }
     public int updateRoom(Room room){
         ContentValues values = new ContentValues();
-        values.put("id", room.getId());
+        values.put("roomID", room.getId());
         values.put("name", room.getName());
-        return db.update("room", values, "id = ?",
+        return db.update("room", values, "roomID = ?",
                 new String[]{String.valueOf(room.getId())});
     }
     public int deleteRoom (int id){
-        return db.delete("room","id = ?", new String[]{String.valueOf(id)});
+        return db.delete("room","roomID = ?", new String[]{String.valueOf(id)});
     }
     public Room getByName(String name){
         String sql = "SELECT * FROM room WHERE name = ?";

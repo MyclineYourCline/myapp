@@ -1,4 +1,4 @@
-package com.example.ungdungchplay.InterfaceManager;
+package com.example.ungdungchplay.InterfaceManager.ActivityInterface;
 
 import com.example.ungdungchplay.ModelManager.User;
 

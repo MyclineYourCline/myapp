@@ -5,11 +5,9 @@ import static android.util.Log.d;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,8 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.ungdungchplay.Database.SqlOpenHelper;
-import com.example.ungdungchplay.InterfaceManager.ScreenInterFace;
-import com.example.ungdungchplay.Presenter.ScreenPresenter;
+import com.example.ungdungchplay.InterfaceManager.ActivityInterface.ScreenInterFace;
+import com.example.ungdungchplay.Presenter.ActivityPresenter.ScreenPresenter;
 import com.example.ungdungchplay.R;
 import com.example.ungdungchplay.ViewPagerManager.ViewPagerAdapterScreen;
 

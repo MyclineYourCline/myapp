@@ -1,4 +1,4 @@
-package com.example.ungdungchplay.InterfaceManager;
+package com.example.ungdungchplay.InterfaceManager.FragmentInterface;
 
 import com.example.ungdungchplay.ModelManager.Room;
 
@@ -9,5 +9,4 @@ public interface FragmentHomeInterface {
     void addRoomErr(String msg);
     void dataExists(List<Room> list);
     void dataErr(String msg);
-    void query (List<Room> list);
 }

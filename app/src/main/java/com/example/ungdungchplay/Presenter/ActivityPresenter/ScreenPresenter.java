@@ -1,10 +1,6 @@
-package com.example.ungdungchplay.Presenter;
+package com.example.ungdungchplay.Presenter.ActivityPresenter;
 
-import android.content.SharedPreferences;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.ungdungchplay.InterfaceManager.ScreenInterFace;
+import com.example.ungdungchplay.InterfaceManager.ActivityInterface.ScreenInterFace;
 
 public class ScreenPresenter {
     private ScreenInterFace screenInterFace;

@@ -28,7 +28,6 @@ public class TableDAO {
     private List<Table> get (String sql, String...args){
         List<Table>  list = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql,args);
-        cursor.moveToFirst();
         while (cursor.moveToNext()){
             Table table = new Table();
             table.setId(cursor.getInt(cursor.getColumnIndex("id")));
@@ -40,16 +39,27 @@ public class TableDAO {
         return list;
     }
     public List<Table> getAll (){
-        String sql = "SELECT * FROM table";
+        String sql = "SELECT * FROM tableRoom";
         return get(sql);
     }
     public long insertTable (Table table){
         ContentValues values = new ContentValues();
-        values.put("id",table.getId());
         values.put("roomID",table.getRoomID());
         values.put("name",table.getName());
         values.put("status",table.getStatus());
-        return db.insert("table", null, values);
+        return db.insert("tableRoom", null, values);
+    }
+    public Table getByNameAndRoomID(String name, int roomID){
+        String sql = "SELECT * FROM tableRoom WHERE name = ? and roomID = ?";
+        List<Table> list = get(sql,name,String.valueOf(roomID));
+        if (list.size() ==  0) return null;
+        else return list.get(0);
+    }
+    public List<Table> getByRoomID(int roomID){
+        String sql = "SELECT * FROM tableRoom WHERE roomID = ?";
+        List<Table> list = get(sql,String.valueOf(roomID));
+        if (list.size() ==  0) return null;
+        else return list;
     }
     public int updateTable (Table table){
         ContentValues values = new ContentValues();
@@ -57,10 +67,10 @@ public class TableDAO {
         values.put("roomID",table.getRoomID());
         values.put("name",table.getName());
         values.put("status",table.getStatus());
-        return db.update("table", values, "id = ?",
+        return db.update("tableRoom", values, "id = ?",
                 new String[]{String.valueOf(table.getId())});
     }
     public int deleteTable  (int id){
-        return db.delete("table", "id = ?", new String[]{String.valueOf(id)});
+        return db.delete("tableRoom", "id = ?", new String[]{String.valueOf(id)});
     }
 }

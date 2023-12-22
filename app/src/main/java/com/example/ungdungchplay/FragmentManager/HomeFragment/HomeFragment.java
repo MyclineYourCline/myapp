@@ -1,29 +1,34 @@
-package com.example.ungdungchplay.FragmentManager;
+package com.example.ungdungchplay.FragmentManager.HomeFragment;
 
 import static android.util.Log.d;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.ungdungchplay.ActivityManager.TableActivity;
 import com.example.ungdungchplay.Adapter.RoomAdapter;
-import com.example.ungdungchplay.InterfaceManager.FragmentHomeInterface;
-import com.example.ungdungchplay.InterfaceManager.RoomListener;
+import com.example.ungdungchplay.Database.DbStruct;
+import com.example.ungdungchplay.InterfaceManager.FragmentInterface.FragmentHomeInterface;
+import com.example.ungdungchplay.InterfaceManager.SendData.RoomListener;
 import com.example.ungdungchplay.ModelManager.Room;
-import com.example.ungdungchplay.Presenter.FragmentHomePresenter;
+import com.example.ungdungchplay.Presenter.FragmentPresenter.FragmentHomePresenter;
 import com.example.ungdungchplay.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements View.OnClickListener, FragmentHomeInterface, RoomListener {
@@ -32,24 +37,50 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Frag
     private RecyclerView rcv;
     private FragmentHomePresenter presenter;
     private RoomAdapter adapter;
+    private TextInputEditText edt_query;
+    private List<Room> list = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         unitUI();
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.getData();
+    }
+
     private void unitUI(){
         btn_add = view.findViewById(R.id.fHome_btnAdd);
         btn_add.setOnClickListener(this);
         rcv = view.findViewById(R.id.fHome_rcv);
         adapter = new RoomAdapter(getContext(),this);
+        adapter.setList(this.list);
+        rcv.setAdapter(adapter);
         presenter = new FragmentHomePresenter(getContext(),this);
-        presenter.getData();
+        edt_query = view.findViewById(R.id.fHome_edt_search);
+        edt_query.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                adapter.getFilter().filter(s);
+                btn_add.setVisibility(View.GONE);
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.getFilter().filter(s);
+                btn_add.setVisibility(View.GONE);
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+               adapter.getFilter().filter(s);
+                btn_add.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -78,7 +109,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Frag
             public void onClick(View v) {
                 if (edt_name.getText().toString().isEmpty()){
                     txt_msg.setText("Cannot be empty");
-                    txt_msg.setVisibility(View.GONE);
+                    txt_msg.setVisibility(View.VISIBLE);
                     txt_msg.setTextColor(getContext().getColor(R.color.error));
                     return;
                 }
@@ -92,35 +123,32 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Frag
     }
     @Override
     public void addRoomSuccess(String msg, List<Room> list) {
-        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
         adapter.setList(list);
     }
 
     @Override
     public void addRoomErr(String msg) {
-        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-        d("ca" + "chung", "addRoomErr: ");
+        adapter.setList(this.list);
     }
-
     @Override
     public void dataExists(List<Room> list) {
         adapter.setList(list);
-        rcv.setAdapter(adapter);
     }
-
     @Override
     public void dataErr(String msg) {
-        d("ca" + "chung", "dataErr: ");
+        d("ca" + "chung", "dataEsssssrr: ");
     }
-
-    @Override
-    public void query(List<Room> list) {
-        adapter.setList(list);
-        d("ca" + "chung", "query: "+list.size());
-    }
-
     @Override
     public void sendData(int option, Room room) {
-        d("ca" + "chung", "sendData: ");
+       if (option == DbStruct.ITEM_CLICK){
+           Intent intent = new Intent(getContext(), TableActivity.class);
+           Bundle bundle = new Bundle();
+           bundle.putSerializable("Room", room);
+           intent.putExtras(bundle);
+           getActivity().startActivity(intent);
+       }
+       else{
+           ///todo...
+       }
     }
 }

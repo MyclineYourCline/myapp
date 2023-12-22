@@ -1,4 +1,4 @@
-package com.example.ungdungchplay.FragmentManager;
+package com.example.ungdungchplay.FragmentManager.ScreenFragment;
 
 import android.content.Context;
 import android.content.Intent;

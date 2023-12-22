@@ -1,14 +1,13 @@
-package com.example.ungdungchplay.Presenter;
+package com.example.ungdungchplay.Presenter.FragmentPresenter;
 
 import static android.util.Log.d;
 
 import android.content.Context;
 
-import com.example.ungdungchplay.Adapter.RoomAdapter;
 import com.example.ungdungchplay.Database.DbStruct;
 import com.example.ungdungchplay.Database.RoomDAO;
-import com.example.ungdungchplay.InterfaceManager.FragmentHomeInterface;
-import com.example.ungdungchplay.InterfaceManager.RoomListener;
+import com.example.ungdungchplay.InterfaceManager.FragmentInterface.FragmentHomeInterface;
+import com.example.ungdungchplay.InterfaceManager.SendData.RoomListener;
 import com.example.ungdungchplay.ModelManager.Room;
 
 import java.util.List;
@@ -17,20 +16,17 @@ public class FragmentHomePresenter implements RoomListener {
     private Context context;
     private FragmentHomeInterface homeInterface;
     private RoomDAO roomDAO;
-    private RoomAdapter adapter;
 
     public FragmentHomePresenter(Context context, FragmentHomeInterface homeInterface) {
         this.context = context;
         this.homeInterface = homeInterface;
         roomDAO = new RoomDAO(context);
-        adapter = new RoomAdapter(context,this);
     }
     public void getData(){
         List<Room> list = roomDAO.getAll();
         if (list == null) homeInterface.dataErr(DbStruct.MESSAGE_ERR);
         else{
             homeInterface.dataExists(list);
-            adapter.setList(list);
         }
     }
     public void  addRoom (Room room){
@@ -43,9 +39,6 @@ public class FragmentHomePresenter implements RoomListener {
         else {
             homeInterface.addRoomErr("already exists: "+room.getName());
         }
-    }
-    public void query (String query){
-        adapter.getFilter().filter(query);
     }
 
     @Override

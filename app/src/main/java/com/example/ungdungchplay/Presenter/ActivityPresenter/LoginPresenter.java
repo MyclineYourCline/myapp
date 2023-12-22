@@ -1,14 +1,12 @@
-package com.example.ungdungchplay.Presenter;
+package com.example.ungdungchplay.Presenter.ActivityPresenter;
 
 import static android.util.Log.d;
 
 import android.content.Context;
 
 import com.example.ungdungchplay.Database.UserDAO;
-import com.example.ungdungchplay.InterfaceManager.LoginInterface;
+import com.example.ungdungchplay.InterfaceManager.ActivityInterface.LoginInterface;
 import com.example.ungdungchplay.ModelManager.User;
-
-import java.util.List;
 
 public class LoginPresenter {
     private LoginInterface loginInterface;

@@ -13,9 +13,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.ungdungchplay.InterfaceManager.LoginInterface;
+import com.example.ungdungchplay.InterfaceManager.ActivityInterface.LoginInterface;
 import com.example.ungdungchplay.ModelManager.User;
-import com.example.ungdungchplay.Presenter.LoginPresenter;
+import com.example.ungdungchplay.Presenter.ActivityPresenter.LoginPresenter;
 import com.example.ungdungchplay.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginInterface {

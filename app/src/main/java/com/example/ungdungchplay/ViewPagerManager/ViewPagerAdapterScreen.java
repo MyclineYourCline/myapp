@@ -4,11 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.ungdungchplay.FragmentManager.ScreenFragment1;
-import com.example.ungdungchplay.FragmentManager.ScreenFragment2;
-import com.example.ungdungchplay.FragmentManager.ScreenFragment3;
+import com.example.ungdungchplay.FragmentManager.ScreenFragment.ScreenFragment1;
+import com.example.ungdungchplay.FragmentManager.ScreenFragment.ScreenFragment2;
+import com.example.ungdungchplay.FragmentManager.ScreenFragment.ScreenFragment3;
 
 public class ViewPagerAdapterScreen extends FragmentStatePagerAdapter {
     public ViewPagerAdapterScreen(@NonNull FragmentManager fm, int behavior) {
