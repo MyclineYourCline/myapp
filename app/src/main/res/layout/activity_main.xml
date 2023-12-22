@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:viewBindingIgnore="true"
     tools:context=".ActivityManager.MainActivity">
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/Main_viewPage"
+    <FrameLayout
+        android:id="@+id/Main_container"
         android:layout_width="match_parent"
-        android:overScrollMode="never"
+        android:layout_above="@id/Main_btn_navigation"
         android:layout_height="match_parent"/>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/Main_btn_navigation"

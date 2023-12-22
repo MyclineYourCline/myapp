@@ -1,21 +1,18 @@
 package com.example.ungdungchplay.Adapter;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ungdungchplay.Database.DbStruct;
-import com.example.ungdungchplay.InterfaceManager.RoomListener;
+import com.example.ungdungchplay.InterfaceManager.SendData.RoomListener;
 import com.example.ungdungchplay.ModelManager.Room;
 import com.example.ungdungchplay.R;
 
@@ -58,10 +55,11 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
                     listener.sendData(DbStruct.ITEM_CLICK,room);
                 }
             });
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public void onClick(View v) {
+                public boolean onLongClick(View v) {
                     listener.sendData(DbStruct.ITEM_LONG_CLICK,room);
+                    return false;
                 }
             });
     }

@@ -26,11 +26,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="message"
+            android:maxLines="1"
             android:gravity="center"/>
         <EditText
             android:id="@+id/Login_edtAccount"
             android:drawableStart="@drawable/round_people_outline_24"
             android:hint="Account"
+            android:maxLines="1"
             android:backgroundTint="@color/teal_700"
             android:layout_width="match_parent"
             android:drawablePadding="20dp"

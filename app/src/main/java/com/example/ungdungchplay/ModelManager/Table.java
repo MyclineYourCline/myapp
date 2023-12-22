@@ -1,6 +1,9 @@
 package com.example.ungdungchplay.ModelManager;
 
 public class Table {
+    public final static int TABLE_ACTIVE = 1;
+    public final static int TABLE_EXISTS = 0;
+
     private int id,roomID,status;
     private String name;
 

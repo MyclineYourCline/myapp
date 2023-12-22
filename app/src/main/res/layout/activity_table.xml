@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityManager.TableActivity">
+    <Button
+        android:id="@+id/Table_txtTitle"
+        android:text="Danh sách các bàn"
+        android:textColor="@color/error"
+        android:fontFamily="serif"
+        android:elevation="4dp"
+        android:stateListAnimator="@animator/btn_click_animator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Tl_1"
+        android:layout_below="@id/Table_txtTitle"
+        android:layout_width="match_parent"
+        android:hint="Search table"
+        app:startIconDrawable="@drawable/baseline_search_24"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Table_edt_search"
+            android:textSize="15sp"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:backgroundTint="@color/btn_p"
+            android:layout_height="match_parent"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/Tl_1"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Table_rcv"
+            android:layout_gravity="center_horizontal"
+            app:spanCount="3"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/Table_btnAdd"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="70dp"
+        android:backgroundTint="@color/custom_btn_add"
+        android:src="@drawable/baseline_add_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="TODO" />
+</RelativeLayout>

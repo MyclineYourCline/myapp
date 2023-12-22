@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".FragmentManager.ScreenFragment1">
+    tools:context=".FragmentManager.ScreenFragment.ScreenFragment1">
  <ImageView
      android:id="@+id/Sf_1"
      android:stateListAnimator="@animator/btn_click_animator"

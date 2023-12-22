@@ -73,6 +73,7 @@
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/Register_edtName"
+                        android:maxLines="1"
                         android:layout_width="match_parent"
                         android:backgroundTint="@color/white"
                         android:layout_height="match_parent"/>
@@ -88,6 +89,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/Register_edtAccount"
                         android:inputType="phone"
+                        android:maxLines="1"
+                        android:maxLength="12"
                         android:layout_width="match_parent"
                         android:backgroundTint="@color/white"
                         android:layout_height="match_parent"/>
@@ -104,6 +107,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/Register_edtPassword"
                         android:layout_width="match_parent"
+                        android:maxLines="1"
                         android:backgroundTint="@color/white"
                         android:layout_height="match_parent"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -119,6 +123,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/Register_edtRepass"
                         android:layout_width="match_parent"
+                        android:maxLines="1"
                         android:backgroundTint="@color/white"
                         android:layout_height="match_parent"/>
                 </com.google.android.material.textfield.TextInputLayout>

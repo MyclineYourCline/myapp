@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentManager.WareHouseFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentManager.HomeFragment.WareHouseFragment">
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/fWare_tab"
+        app:tabSelectedTextColor="@color/white"
+        app:tabIndicatorColor="@color/btn_p"
+        app:tabBackground="@drawable/custom_tab"
+        android:elevation="4dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="ware" />
-
-</FrameLayout>
+        android:layout_height="wrap_content"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/fWare_container"
+        android:layout_below="@+id/fWare_tab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<!-- res/drawable/tab_selected_background.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <!-- Thiết lập màu nền khi tab được chọn -->
+            <solid android:color="#EF3232" /> <!-- Màu đỏ làm ví dụ -->
+            <!-- Các thuộc tính khác nếu cần -->
+        </shape>
+    </item>
+    <item android:state_selected="false">
+        <shape android:shape="rectangle">
+            <!-- Thiết lập màu nền khi tab được chọn -->
+            <solid android:color="@color/white" /> <!-- Màu đỏ làm ví dụ -->
+            <!-- Các thuộc tính khác nếu cần -->
+        </shape>
+    </item>
+    <!-- Các trạng thái khác nếu cần -->
+</selector>
