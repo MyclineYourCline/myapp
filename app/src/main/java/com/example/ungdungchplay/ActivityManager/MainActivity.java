@@ -20,6 +20,7 @@ import com.example.ungdungchplay.FragmentManager.HomeFragment.HomeFragment;
 import com.example.ungdungchplay.R;
 import com.example.ungdungchplay.ViewPagerManager.ViewPagerAdapterService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.List;
 
@@ -40,22 +41,20 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.Main_container,new HomeFragment()).commit();
         //
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.menu_nav_home:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Main_container,new HomeFragment()).commit();
-                        break;
-                    case R.id.menu_nav_warehouse:
-                        Intent intent = new Intent(MainActivity.this, WareHouseActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.menu_nav_tableActive:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Main_container,new ActiveFragment()).commit();
-                        break;
+                        case R.id.menu_nav_home:
+                            getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.Main_container,new HomeFragment()).commit();
+                            break;
+                        case R.id.menu_nav_warehouse:
+                            Intent intent = new Intent(MainActivity.this, WareHouseActivity.class);
+                            startActivity(intent);
+                            break;
+                        case R.id.menu_nav_tableActive:
+                            getSupportFragmentManager().beginTransaction();
                 }
                 return true;
             }
