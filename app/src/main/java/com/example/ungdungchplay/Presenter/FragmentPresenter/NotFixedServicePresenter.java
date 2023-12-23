@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.ungdungchplay.Database.ServiceDAO;
 import com.example.ungdungchplay.InterfaceManager.FragmentInterface.NotFixedServiceInterface;
+import com.example.ungdungchplay.InterfaceManager.SendData.OnDataLoadedListener;
 import com.example.ungdungchplay.ModelManager.Service;
 
 import java.util.List;
@@ -11,16 +12,15 @@ import java.util.List;
 public class NotFixedServicePresenter {
     private Context context;
     private ServiceDAO serviceDAO;
-    private NotFixedServiceInterface iNotFixedServiceInterface;
+    private OnDataLoadedListener onDataLoadedListener;
 
-    public NotFixedServicePresenter(Context context ,NotFixedServiceInterface fixedServiceInterface) {
+    public NotFixedServicePresenter(Context context ,OnDataLoadedListener onDataLoadedListener) {
         this.context = context;
-        this.iNotFixedServiceInterface = fixedServiceInterface;
+        this.onDataLoadedListener = onDataLoadedListener;
         serviceDAO = new ServiceDAO(context);
     }
-    public void getData (int type){
-        List<Service> list = serviceDAO.queryByType(type);
-        if (list == null) iNotFixedServiceInterface.dataError("Data not Exists");
-        else iNotFixedServiceInterface.dataExists(list);
+    public void getData2(String type){
+        String sql = "SELECT * FROM service WHERE type = ?";
+        serviceDAO.getAsync2(sql,onDataLoadedListener,type);
     }
 }
