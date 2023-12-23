@@ -44,8 +44,6 @@ import com.example.ungdungchplay.R;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.io.InputStream;
 import java.util.List;

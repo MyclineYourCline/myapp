@@ -22,7 +22,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.ungdungchplay.InterfaceManager.SendData.ServiceListener;
 import com.example.ungdungchplay.ModelManager.Service;
 import com.example.ungdungchplay.R;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.text.NumberFormat;
@@ -57,10 +56,16 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceA
         Service service = list.get(position);
         if (service == null) return;
         //
-        Glide.with(context.getApplicationContext())
-                .load(Uri.parse(service.getImageURi()))
-                        .into(holder.image);
-        //
+        if (service.getImageURi() == null){
+            holder.image.setImageResource(R.drawable.add_2);
+        }
+        else{
+            Glide.with(context.getApplicationContext())
+                    .load(Uri.parse(service.getImageURi()))
+                    .into(holder.image);
+            //
+        }
+
 
         holder.txt_name.setText("Name: "+service.getName());
         holder.txt_des.setText("Description: "+service.getDescription());

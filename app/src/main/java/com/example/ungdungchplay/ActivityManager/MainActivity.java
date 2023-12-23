@@ -20,8 +20,6 @@ import com.example.ungdungchplay.FragmentManager.HomeFragment.WareHouseFragment;
 import com.example.ungdungchplay.R;
 import com.example.ungdungchplay.ViewPagerManager.ViewPagerAdapterService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.util.List;
 
