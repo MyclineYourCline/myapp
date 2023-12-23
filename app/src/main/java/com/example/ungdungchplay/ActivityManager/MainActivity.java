@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,7 +17,6 @@ import android.widget.Toast;
 
 import com.example.ungdungchplay.FragmentManager.HomeFragment.ActiveFragment;
 import com.example.ungdungchplay.FragmentManager.HomeFragment.HomeFragment;
-import com.example.ungdungchplay.FragmentManager.HomeFragment.WareHouseFragment;
 import com.example.ungdungchplay.R;
 import com.example.ungdungchplay.ViewPagerManager.ViewPagerAdapterService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
                                 .replace(R.id.Main_container,new HomeFragment()).commit();
                         break;
                     case R.id.menu_nav_warehouse:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Main_container,new WareHouseFragment()).commit();
+                        Intent intent = new Intent(MainActivity.this, WareHouseActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.menu_nav_tableActive:
                         getSupportFragmentManager().beginTransaction()

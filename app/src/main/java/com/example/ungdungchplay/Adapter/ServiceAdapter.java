@@ -38,11 +38,11 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceA
     public ServiceAdapter(Context context, ServiceListener listener) {
         this.context = context;
         this.listener = listener;
-        notifyDataSetChanged();
     }
     public void setList (List<Service> list){
         this.list = list;
         this.listOld =  this.list;
+        notifyDataSetChanged();
     }
     @NonNull
     @Override

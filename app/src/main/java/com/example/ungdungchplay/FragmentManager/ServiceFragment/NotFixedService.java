@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.ungdungchplay.Adapter.ServiceAdapter;
 import com.example.ungdungchplay.InterfaceManager.FragmentInterface.NotFixedServiceInterface;
+import com.example.ungdungchplay.InterfaceManager.SendData.OnDataLoadedListener;
 import com.example.ungdungchplay.InterfaceManager.SendData.ServiceListener;
 import com.example.ungdungchplay.ModelManager.Service;
 import com.example.ungdungchplay.Presenter.FragmentPresenter.NotFixedServicePresenter;
@@ -23,11 +24,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotFixedService extends Fragment implements ServiceListener, NotFixedServiceInterface {
+public class NotFixedService extends Fragment implements ServiceListener, OnDataLoadedListener {
     private View view;
     private RecyclerView rcv;
     private TextInputEditText edt_search;
-    private List<Service> list = new ArrayList<>();
+    private List<Service> listA = new ArrayList<>();
     private ServiceAdapter serviceAdapter;
     private NotFixedServicePresenter notFixedServicePresenter;
     @Override
@@ -43,8 +44,9 @@ public class NotFixedService extends Fragment implements ServiceListener, NotFix
         rcv = view.findViewById(R.id.NotFixedService_rcv);
         edt_search = view.findViewById(R.id.NotFixedService_edt_search);
         serviceAdapter =  new ServiceAdapter(getContext(),this);
-        serviceAdapter.setList(list);
-        notFixedServicePresenter.getData(1);
+        serviceAdapter.setList(listA);
+//        notFixedServicePresenter.getData(1);
+        notFixedServicePresenter.getData2(String.valueOf(1));
         rcv.setAdapter(serviceAdapter);
     }
 
@@ -52,21 +54,21 @@ public class NotFixedService extends Fragment implements ServiceListener, NotFix
     public void senData(int option, Service service) {
 
     }
-
-    @Override
-    public void dataExists(List<Service> list) {
-       serviceAdapter.setList(list);
-       serviceAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void dataError(String msg) {
-        d("ca" + "chungs", "dataError: "+msg);
-    }
-
     @Override
     public void onResume() {
         super.onResume();
-        notFixedServicePresenter.getData(1);
+        notFixedServicePresenter.getData2(String.valueOf(1));
+    }
+
+    @Override
+    public void onDataLoaded(List<Service> list) {
+        listA.clear();
+        listA.addAll(list);
+        serviceAdapter.setList(listA);
+    }
+
+    @Override
+    public void onError(String msg) {
+
     }
 }

@@ -1,10 +1,16 @@
 package com.example.ungdungchplay.Presenter.FragmentPresenter;
 
+import static android.util.Log.d;
+
 import android.content.Context;
 
 import com.example.ungdungchplay.Database.DbStruct;
 import com.example.ungdungchplay.Database.ServiceDAO;
+import com.example.ungdungchplay.Database.UserDAO;
+import com.example.ungdungchplay.FragmentManager.ServiceFragment.FixedService;
+import com.example.ungdungchplay.FragmentManager.ServiceFragment.NotFixedService;
 import com.example.ungdungchplay.InterfaceManager.FragmentInterface.FragmentAddServiceInterface;
+import com.example.ungdungchplay.InterfaceManager.SendData.OnDataLoadedListener;
 import com.example.ungdungchplay.ModelManager.Service;
 
 import java.util.List;
@@ -23,7 +29,9 @@ public class FragmentAddServicePresenter {
         if (serviceC == null){
             long checkI = serviceDAO.insertService(service);
             if (checkI == DbStruct.INSERT_ERR) iAddServiceInterface.addServiceError("Insert Err: "+service.getName());
-            else iAddServiceInterface.addServiceSuccess("Insert Success: "+service.getName());
+            else {
+                iAddServiceInterface.addServiceSuccess("Insert Success: "+service.getName());
+            }
         }
         else{
             iAddServiceInterface.addServiceExists("Already exist service: "+service.getName());
