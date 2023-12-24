@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.ungdungchplay.ActivityManager.LoginActivity;
+import com.example.ungdungchplay.ActivityManager.MainActivity;
 import com.example.ungdungchplay.ActivityManager.ScreenActivity;
 import com.example.ungdungchplay.R;
 
@@ -44,7 +45,7 @@ public class ScreenFragment3 extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.Screen3_btnStart:
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                Intent intent = new Intent(getActivity(), MainActivity .class);
                 getActivity().startActivity(intent);
                 active();
                 break;

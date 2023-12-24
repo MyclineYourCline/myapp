@@ -116,7 +116,7 @@ public class ScreenActivity extends AppCompatActivity implements ScreenInterFace
     @Override
     public void activeSuccess() {
         d("ca" + "chung", "activeSuccess: ");
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
     @Override
