@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.ungdungchplay.AnimationTranformer.ZoomOutPageTransformer;
 import com.example.ungdungchplay.R;
 import com.example.ungdungchplay.ViewPagerManager.ViewPagerAdapterService;
 import com.google.android.material.tabs.TabLayout;
@@ -32,7 +33,8 @@ public class WareHouseActivity extends AppCompatActivity implements View.OnClick
         viewPager2 = findViewById(R.id.WareHouseActivity_container);
         pagerAdapterService = new ViewPagerAdapterService(this);
         viewPager2.setAdapter(pagerAdapterService);
-        viewPager2.setOffscreenPageLimit(2);
+        viewPager2.setOffscreenPageLimit(1);
+        viewPager2.setPageTransformer( new ZoomOutPageTransformer());
         WareHouseActivity_back = findViewById(R.id.WareHouseActivity_back);
         WareHouseActivity_back.setOnClickListener(this);
         // Kết nối TabLayout với ViewPager2 và đặt tên riêng cho từng tab
@@ -41,13 +43,6 @@ public class WareHouseActivity extends AppCompatActivity implements View.OnClick
             tab.setText(TAB_TITLES[position]);
         }).attach();
         //
-        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-                d("ca" + "chung", "onPageScrolled: "+positionOffsetPixels);
-            }
-        });
     }
 
     @Override

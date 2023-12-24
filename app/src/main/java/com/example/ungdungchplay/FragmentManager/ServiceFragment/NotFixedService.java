@@ -2,15 +2,21 @@ package com.example.ungdungchplay.FragmentManager.ServiceFragment;
 
 import static android.util.Log.d;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+import android.widget.Toast;
 
 import com.example.ungdungchplay.Adapter.ServiceAdapter;
 import com.example.ungdungchplay.InterfaceManager.FragmentInterface.NotFixedServiceInterface;
@@ -54,6 +60,7 @@ public class NotFixedService extends Fragment implements ServiceListener, OnData
     public void senData(int option, Service service) {
 
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -62,13 +69,39 @@ public class NotFixedService extends Fragment implements ServiceListener, OnData
 
     @Override
     public void onDataLoaded(List<Service> list) {
-        listA.clear();
-        listA.addAll(list);
-        serviceAdapter.setList(listA);
+        setListAnimation();
+        serviceAdapter.setList(list);
     }
 
     @Override
     public void onError(String msg) {
 
+    }
+    private void startQuery() {
+        edt_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                setListAnimation();
+                serviceAdapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                setListAnimation();
+                serviceAdapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                setListAnimation();
+                serviceAdapter.getFilter().filter(s);
+            }
+
+        });
+    }
+    private void setListAnimation() {
+        LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(
+                getContext(),R.anim.layout_item_right_to_left);
+        rcv.setLayoutAnimation(layoutAnimationController);
     }
 }

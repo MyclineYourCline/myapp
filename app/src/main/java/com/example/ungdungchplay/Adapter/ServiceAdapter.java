@@ -1,5 +1,6 @@
 package com.example.ungdungchplay.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -10,6 +11,8 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,14 +23,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.ungdungchplay.InterfaceManager.SendData.ServiceListener;
+import com.example.ungdungchplay.ModelManager.Room;
 import com.example.ungdungchplay.ModelManager.Service;
 import com.example.ungdungchplay.R;
 
 import java.io.File;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceAdapterViewHolder>{
+public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceAdapterViewHolder> implements Filterable {
     private Context context;
     private List<Service> list;
     private List<Service> listOld;
@@ -39,6 +44,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceA
         this.context = context;
         this.listener = listener;
     }
+    @SuppressLint("NotifyDataSetChanged")
     public void setList (List<Service> list){
         this.list = list;
         this.listOld =  this.list;
@@ -65,8 +71,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceA
                     .into(holder.image);
             //
         }
-
-
         holder.txt_name.setText("Name: "+service.getName());
         holder.txt_des.setText("Description: "+service.getDescription());
         String price = formatPrice(String.valueOf(service.getPrice()));
@@ -129,5 +133,35 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceA
         double fDouble = Double.parseDouble(price);
         String fPrice = numberFormat.format(fDouble);
         return fPrice;
+    }
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String query = constraint.toString();
+                if (query.isEmpty()){
+                    list = listOld;
+                }
+                else {
+                    List<Service> mList1 =  new ArrayList<>();
+                    for (Service x: listOld){
+                        if (x.getName().toLowerCase().contains(query.toLowerCase())){
+                            mList1.add(x);
+                        }
+                    }
+                    list = mList1;
+                }
+                FilterResults results = new FilterResults();
+                results.values =  list;
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                list = (List<Service>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }

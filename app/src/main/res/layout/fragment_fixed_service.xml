@@ -17,10 +17,10 @@
             android:backgroundTint="@color/white"
             android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/FixedService_rcv"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_height="match_parent"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/FixedService_rcv"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="match_parent"/>
 </LinearLayout>

@@ -96,6 +96,23 @@ public class ServiceDAO {
             }
         });
     }
+    @SuppressLint("Range")
+    private List<Service> get(String sql, String...args){
+        List<Service> list = new ArrayList<>();
+        Cursor cursor = db.rawQuery(sql, args);
+        while (cursor.moveToNext()) {
+            Service service = new Service();
+            service.setId(cursor.getInt(cursor.getColumnIndex("serviceID")));
+            service.setName(cursor.getString(cursor.getColumnIndex("name")));
+            service.setPrice(cursor.getInt(cursor.getColumnIndex("price")));
+            service.setCount(cursor.getInt(cursor.getColumnIndex("count")));
+            service.setType(cursor.getInt(cursor.getColumnIndex("type")));
+            service.setImageURi(cursor.getString(cursor.getColumnIndex("imageUri")));
+            service.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+            list.add(service);
+        }
+        return list;
+    }
 
     //
     public int deleteService (int id){
@@ -135,7 +152,7 @@ public class ServiceDAO {
     }
     public List<Service> queryByType (int type){
         String sql = "SELECT * FROM service WHERE type = ?";
-        List<Service> list = getAsync(sql, String.valueOf(type)).join();
+        List<Service> list = get(sql, String.valueOf(type));
         if (list.size() == 0) return  null;
         else return list;
     }
