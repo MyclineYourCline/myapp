@@ -54,6 +54,7 @@ public class NotFixedService extends Fragment implements ServiceListener, OnData
 //        notFixedServicePresenter.getData(1);
         notFixedServicePresenter.getData2(String.valueOf(1));
         rcv.setAdapter(serviceAdapter);
+        startQuery();
     }
 
     @Override
