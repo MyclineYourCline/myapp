@@ -1,6 +1,8 @@
 package com.example.ungdungchplay.ModelManager;
 
-public class Table {
+import java.io.Serializable;
+
+public class Table implements Serializable {
     public final static int TABLE_ACTIVE = 1;
     public final static int TABLE_EXISTS = 0;
 

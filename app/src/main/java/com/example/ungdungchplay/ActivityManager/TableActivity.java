@@ -6,16 +6,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.app.StatusBarManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ungdungchplay.Adapter.TableAdapter;
+import com.example.ungdungchplay.Database.DbStruct;
 import com.example.ungdungchplay.InterfaceManager.ActivityInterface.TableActivityInterFace;
 import com.example.ungdungchplay.InterfaceManager.SendData.TableListener;
 import com.example.ungdungchplay.ModelManager.Room;
@@ -38,7 +44,8 @@ public class TableActivity extends AppCompatActivity implements TableActivityInt
     private TableAdapter tableAdapter;
     private TableActivityPresenter presenter;
     private Intent resultForRoom;
-    private TextView titleMain;
+    private ImageView img_back;
+
     private Room room;
 
     @Override
@@ -95,8 +102,8 @@ public class TableActivity extends AppCompatActivity implements TableActivityInt
         tableAdapter = new TableAdapter(this,this);
         tableAdapter.setList(list);
         rcv.setAdapter(tableAdapter);
-        titleMain = findViewById(R.id.Table_txtTitle);
-        titleMain.setText("Danh sách các bàn : Phòng "+room.getName());
+        img_back = findViewById(R.id.TableActivity_img_back);
+        img_back.setOnClickListener(this);
         //
         btn_add.setOnClickListener(this);
         presenter = new TableActivityPresenter(this,this);
@@ -106,6 +113,16 @@ public class TableActivity extends AppCompatActivity implements TableActivityInt
 
     @Override
     public void sendData(int option, Table table) {
+        if(option == DbStruct.ITEM_CLICK){
+            Intent intent = new Intent(this,OderActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Data", table);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+        else{
+            return;
+        }
 
     }
 
@@ -114,6 +131,9 @@ public class TableActivity extends AppCompatActivity implements TableActivityInt
         switch (v.getId()){
             case R.id.Table_btnAdd:
                 btnAddOnclick();
+                break;
+            case R.id.TableActivity_img_back:
+                finish();
                 break;
         }
     }

@@ -3,39 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7F4F6"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FragmentManager.ServiceFragment.AddServices">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_margin="4dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+
                 <ImageButton
                     android:id="@+id/addService_btnAddImg"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/img_add"
                     android:elevation="4dp"
                     android:padding="10dp"
-                    android:background="@drawable/img_add"
                     android:scaleType="centerInside"
                     android:stateListAnimator="@animator/btn_click_animator" />
             </androidx.cardview.widget.CardView>
+
             <TextView
                 android:id="@+id/addService_msg"
-                android:visibility="gone"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="@string/message"
-                android:layout_height="wrap_content"/>
+                android:visibility="gone" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,14 +51,16 @@
                 android:hint="name(*)"
                 android:maxLines="1"
                 android:paddingHorizontal="10dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addService_name"
-                    android:maxLines="1"
-                    android:maxLength="9"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:backgroundTint="@color/white" />
+                    android:backgroundTint="@color/white"
+                    android:maxLength="30"
+                    android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,15 +69,17 @@
                 android:hint="price(*)"
                 android:maxLines="1"
                 android:paddingHorizontal="10dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addService_price"
                     android:layout_width="match_parent"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:maxLength="9"
                     android:layout_height="match_parent"
-                    android:backgroundTint="@color/white" />
+                    android:backgroundTint="@color/white"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,50 +88,57 @@
                 android:hint="description"
                 android:maxLines="1"
                 android:paddingHorizontal="10dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addService_des"
                     android:layout_width="match_parent"
-                    android:maxLines="1"
                     android:layout_height="match_parent"
-                    android:backgroundTint="@color/white" />
+                    android:backgroundTint="@color/white"
+                    android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/showCount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_edit"
                 android:hint="count(*)"
-                android:id="@+id/showCount"
-                android:maxLines="1"
                 android:maxLength="9"
-                android:visibility="gone"
-                android:paddingHorizontal="10dp">
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:visibility="gone">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addService_count"
-                    android:inputType="number"
-                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:backgroundTint="@color/white" />
+                    android:backgroundTint="@color/white"
+                    android:inputType="number"
+                    android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <RadioGroup
                 android:id="@+id/addService_rdg"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center_vertical"
                 android:layout_margin="10dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
+
                 <RadioButton
                     android:id="@+id/addService_rb_exists"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dịch vụ có sẵn" />
+
                 <RadioButton
                     android:id="@+id/addService_rb_notExists"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dịch vụ nhập ngoài" />
             </RadioGroup>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/custom_btn_start"
+                    android:background="@drawable/custom_btn_cancel"
                     android:stateListAnimator="@animator/btn_click_animator"
                     android:text="Clear"
                     android:textColor="@color/white" />
@@ -144,7 +162,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/custom_btn_login"
+                    android:background="@drawable/custom_btn_blue"
                     android:stateListAnimator="@animator/btn_click_animator"
                     android:text="add"
                     android:textColor="@color/white" />

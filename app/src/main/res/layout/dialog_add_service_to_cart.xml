@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorBackGround_btn"
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/AccountFragment_toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/AccountFragment_img_back"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/back_white"
+                android:layout_centerInParent="true"
+                android:layout_width="20sp"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/AccountFragment_img_back"
+                android:gravity="center"
+                android:text="Oder Table"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:scaleType="centerCrop"
+        android:src="@drawable/img"
+        android:layout_width="150dp"
+        android:layout_marginTop="130dp"
+        android:elevation="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="150dp"/>
+    <RelativeLayout
+        android:layout_marginTop="200dp"
+        android:background="@drawable/custom_background_spider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginTop="100dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Apple"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="50,000 Vnd"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

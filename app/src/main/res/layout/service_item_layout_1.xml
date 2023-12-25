@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_margin="1dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginTop="3dp"
+    app:cardCornerRadius="8dp"
     android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/serviceItem_img"
             android:layout_alignParentStart="true"
             android:layout_width="100dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/custom_btn_start"
+            android:padding="10dp"
+            android:src="@color/error"
+            android:elevation="3dp"
             android:layout_height="100dp"/>
         <LinearLayout
             android:id="@+id/L1"

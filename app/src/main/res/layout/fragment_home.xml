@@ -7,8 +7,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="5dp"
     tools:context=".FragmentManager.HomeFragment.HomeFragment">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@id/OderActivity_img_back"
+            android:gravity="center"
+            android:text="Room"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Tl_1"
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:hint="Search room"
         android:maxLines="1"

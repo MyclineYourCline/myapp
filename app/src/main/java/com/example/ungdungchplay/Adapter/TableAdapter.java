@@ -55,10 +55,11 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
                 listener.sendData(DbStruct.ITEM_CLICK,table);
             }
         });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
-                listener.sendData(DbStruct.ITEM_LONG_CLICK,table);
+            public boolean onLongClick(View v) {
+                listener.sendData(2,table);
+                return true;
             }
         });
     }

@@ -14,4 +14,5 @@
     <color name="error">#D30F2A</color>
     <color name="success">#4CAF50</color>
     <color name="table">#256AA6</color>
+    <color name="colorBackGround_btn">#178352</color>
 </resources>

@@ -8,6 +8,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.ungdungchplay.AnimationTranformer.ZoomOutPageTransformer;
 import com.example.ungdungchplay.R;
@@ -20,8 +21,9 @@ public class WareHouseActivity extends AppCompatActivity implements View.OnClick
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
     private ImageView WareHouseActivity_back;
+    private TextView txt_title;
     private ViewPagerAdapterService pagerAdapterService;
-    private static final String[] TAB_TITLES = {"Dịch vụ cố định", "Dịch vụ Khác", "Thêm dịch vụ"};
+    private static final String[] TAB_TITLES = {"Cố định", "Không cố định", "Thêm"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +35,11 @@ public class WareHouseActivity extends AppCompatActivity implements View.OnClick
         viewPager2 = findViewById(R.id.WareHouseActivity_container);
         pagerAdapterService = new ViewPagerAdapterService(this);
         viewPager2.setAdapter(pagerAdapterService);
-        viewPager2.setOffscreenPageLimit(1);
         viewPager2.setPageTransformer( new ZoomOutPageTransformer());
-        WareHouseActivity_back = findViewById(R.id.WareHouseActivity_back);
+        WareHouseActivity_back = findViewById(R.id.WareHouseActivity_img_back);
         WareHouseActivity_back.setOnClickListener(this);
+        txt_title = findViewById(R.id.WareHouseActivity_txt_title);
+        txt_title.setText("warehouses");
         // Kết nối TabLayout với ViewPager2 và đặt tên riêng cho từng tab
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
             // Thiết lập tiêu đề cho mỗi tab dựa trên mảng chuỗi tên
@@ -48,7 +51,7 @@ public class WareHouseActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.WareHouseActivity_back:
+            case R.id.WareHouseActivity_img_back:
                 finish();
             break;
         }

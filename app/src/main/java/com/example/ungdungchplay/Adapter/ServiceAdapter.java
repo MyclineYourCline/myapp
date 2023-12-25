@@ -71,16 +71,16 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceA
                     .into(holder.image);
             //
         }
-        holder.txt_name.setText("Name: "+service.getName());
-        holder.txt_des.setText("Description: "+service.getDescription());
+        holder.txt_name.setText(service.getName());
+        holder.txt_des.setText(service.getDescription());
         String price = formatPrice(String.valueOf(service.getPrice()));
-        holder.txt_price.setText("Price: "+price);
+        holder.txt_price.setText(price);
         if (service.getType() ==  0){
             holder.txt_count.setVisibility(View.GONE);
         }
         else{
             String quantity = formatPrice(String.valueOf(service.getCount()));
-            holder.txt_count.setText("Quantity: "+quantity);
+            holder.txt_count.setText(quantity);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

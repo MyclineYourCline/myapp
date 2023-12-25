@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityManager.WareHouseActivity">
+    android:background="@color/white"
+    android:padding="5dp"
+    android:orientation="vertical"
+    tools:context=".ActivityManager.OderActivity">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/WareHouseActivity_toolBar"
+        android:id="@+id/AccountFragment_toolBar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
-                android:id="@+id/WareHouseActivity_img_back"
+                android:id="@+id/OderActivity_img_back"
                 android:layout_width="20sp"
                 android:layout_height="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
                 android:src="@drawable/back" />
+
             <TextView
-                android:id="@+id/WareHouseActivity_txt_title"
+                android:id="@+id/OderActivity_txt_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/WareHouseActivity_img_back"
+                android:layout_toEndOf="@id/OderActivity_img_back"
                 android:gravity="center"
-                android:text="warehouses"
+                android:text="Oder Table"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
     <com.google.android.material.tabs.TabLayout
-        android:layout_below="@id/WareHouseActivity_toolBar"
-        android:id="@+id/WareHouseActivity_tab"
-        android:padding="1dp"
-        android:layout_width="match_parent"
+        android:id="@+id/OderActivity_tabLayout"
+        android:layout_width="wrap_content"
+        android:paddingHorizontal="5dp"
         app:tabSelectedTextColor="@color/success"
-        android:layout_height="?actionBarSize"/>
+        android:layout_height="wrap_content"/>
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/WareHouseActivity_container"
-        android:layout_below="@+id/WareHouseActivity_tab"
+        android:id="@+id/OderActivity_frame_container"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-</RelativeLayout>
+</LinearLayout>

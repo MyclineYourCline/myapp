@@ -12,6 +12,9 @@
         android:theme="@style/Theme.UngDungChplay"
         tools:targetApi="31">
         <activity
+            android:name=".ActivityManager.OderActivity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityManager.WareHouseActivity"
             android:exported="false" />
         <activity
