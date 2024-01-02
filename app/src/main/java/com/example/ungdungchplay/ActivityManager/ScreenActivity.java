@@ -1,21 +1,34 @@
 package com.example.ungdungchplay.ActivityManager;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.util.Log.d;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ungdungchplay.Database.SqlOpenHelper;
 import com.example.ungdungchplay.InterfaceManager.ActivityInterface.ScreenInterFace;
@@ -36,16 +49,19 @@ public class ScreenActivity extends AppCompatActivity implements ScreenInterFace
     public static final int pagerIndex2 =1;
     public static final int pagerIndex3 =2;
     public static final String SHARE_NAME = "ResTof";
+    private ActivityResultLauncher<Intent> activityResultLauncher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen);
         unitView();
-        adapterScreen = new ViewPagerAdapterScreen(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        adapterScreen = new ViewPagerAdapterScreen(getSupportFragmentManager(),
+                FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(adapterScreen);
-        indicator.setViewPager(viewPager);
-
+        indicator.setViewPager(viewPager); // WE have a permission just start your work.
     }
+
+
     void unitView (){
         screenPresenter = new ScreenPresenter(this);
         viewPager = findViewById(R.id.Screen_viewPager);
@@ -115,12 +131,10 @@ public class ScreenActivity extends AppCompatActivity implements ScreenInterFace
     }
     @Override
     public void activeSuccess() {
-        d("ca" + "chung", "activeSuccess: ");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
     @Override
     public void activeErr() {
-        d("ca" + "chung", "activeErr: ");
     }
 }

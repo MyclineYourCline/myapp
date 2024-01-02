@@ -10,7 +10,7 @@ public class ZoomOutPageTransformer implements ViewPager2.PageTransformer {
     private static final float MIN_SCALE = 0.7f;
     @Override
     public void transformPage(@NonNull View page, float position) {
-        int pageWidth = page.getWidth()/4;
+        int pageWidth = page.getWidth()/10;
 
         if (position < -1) { // [-Infinity,-1)
             // This page is way off-screen to the left.

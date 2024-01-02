@@ -12,32 +12,23 @@
             android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/AccountFragment_img_back"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/back_white"
-                android:layout_centerInParent="true"
                 android:layout_width="20sp"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/back_white" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/AccountFragment_img_back"
                 android:gravity="center"
-                android:text="Oder Table"
+                android:text="Add Oder"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:scaleType="centerCrop"
-        android:src="@drawable/img"
-        android:layout_width="150dp"
-        android:layout_marginTop="130dp"
-        android:elevation="5dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="150dp"/>
     <RelativeLayout
         android:layout_marginTop="200dp"
         android:background="@drawable/custom_background_spider"
@@ -49,6 +40,7 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/Dialog_add_to_cart_txt_name"
                 android:text="Apple"
                 android:gravity="center"
                 android:textSize="20sp"
@@ -57,18 +49,110 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:id="@+id/Dialog_add_to_cart_txt_price"
                 android:text="50,000 Vnd"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/error"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_btn_blue_2"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:stateListAnimator="@animator/btn_click_animator">
+
+                <Button
+                    android:id="@+id/Dialog_add_to_cart_btn_less"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_btn_blue_2"
+                    android:gravity="center"
+                    android:stateListAnimator="@animator/btn_click_animator"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/Dialog_add_to_cart_txt_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+                <Button
+                    android:id="@+id/Dialog_add_to_cart_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_btn_blue_2"
+                    android:gravity="center"
+                    android:stateListAnimator="@animator/btn_click_animator"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/Dialog_add_to_cart_total"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@color/error"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
+       <RelativeLayout
+           android:layout_alignParentBottom="true"
+           android:layout_width="match_parent"
+           android:layout_marginHorizontal="30dp"
+           android:layout_marginBottom="50dp"
+           android:layout_centerVertical="true"
+           android:background="@drawable/custom_btn_blue"
+           android:layout_height="wrap_content">
+           <Button
+               android:id="@+id/Dialog_add_to_cart_btn_add_to_oder"
+               android:background="@drawable/custom_btn_blue"
+               android:layout_width="match_parent"
+               android:text="Add to oder"
+               android:textColor="@color/white"
+               android:textStyle="bold"
+               android:stateListAnimator="@animator/btn_click_animator"
+               android:textSize="15sp"
+               android:layout_toEndOf="@id/cart"
+               android:layout_height="wrap_content"/>
+           <ImageView
+               android:id="@+id/cart"
+               android:layout_alignParentStart="true"
+               android:layout_marginStart="20dp"
+               android:layout_width="30sp"
+               android:layout_centerVertical="true"
+               android:src="@drawable/baseline_shopping_cart_24"
+               android:layout_height="30sp"/>
+       </RelativeLayout>
     </RelativeLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/Dialog_add_to_cart_img_img"
+        android:src="@drawable/img"
+        android:layout_width="150dp"
+        android:layout_marginTop="130dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="150dp"/>
 </FrameLayout>

@@ -1,5 +1,7 @@
 package com.example.ungdungchplay.Adapter;
 
+import static android.util.Log.d;
+
 import android.annotation.SuppressLint;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
@@ -18,16 +20,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.ungdungchplay.InterfaceManager.SendData.ServiceListener;
-import com.example.ungdungchplay.ModelManager.Room;
 import com.example.ungdungchplay.ModelManager.Service;
 import com.example.ungdungchplay.R;
 
-import java.io.File;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;

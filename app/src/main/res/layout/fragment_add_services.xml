@@ -21,11 +21,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp">
-
                 <ImageButton
                     android:id="@+id/addService_btnAddImg"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/img_add"
                     android:elevation="4dp"

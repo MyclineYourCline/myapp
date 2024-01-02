@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/Layout_bts_cart_l"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_marginHorizontal="10dp"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#efefef"
     app:behavior_hideable="false"
     app:behavior_peekHeight="?actionBarSize"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     >
     <RelativeLayout
+        android:id="@+id/R1"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize">
         <TextView
             android:id="@+id/Layout_bts_cart_txt_quantity_oder"
-            android:text="Table oder: 5 Item"
+            android:text="Table oder: 0 Item"
             android:textColor="@color/black"
             android:paddingVertical="10dp"
             android:textStyle="bold"
@@ -36,17 +37,21 @@
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Layout_bts_cart_txt_rcv"
+        android:layout_below="@+id/R1"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
+        android:layout_above="@+id/Layout_bts_cart_btn_total"
         android:layout_height="match_parent"/>
     <Button
         android:id="@+id/Layout_bts_cart_btn_total"
         android:textColor="@color/white"
         android:stateListAnimator="@animator/btn_click_animator"
-        android:text="Confirm and Oder: 150,000 Vnd"
+        android:text="Confirm and Oder: 0 Vnd"
         android:fontFamily="sans-serif"
         android:background="@drawable/custom_btn_blue"
         android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
         android:layout_height="?actionBarSize"/>
-</LinearLayout>
+</RelativeLayout>

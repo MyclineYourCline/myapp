@@ -29,14 +29,6 @@ public class DbStruct {
             "name TEXT," +
             "status INTEGER," +
             "FOREIGN KEY (roomID) REFERENCES room (roomID))";
-    public static final String CREATE_TABLE_BILL ="" +
-            "create table bill (" +
-            "billID INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "customerID INTEGER," +
-            "totalMoney INTEGER," +
-            "note TEXT," +
-            "status INTEGER," +
-            "FOREIGN KEY (customerID) REFERENCES customer (customerID))";
     public static final String CREATE_TABLE_CUSTOMER = "" +
             "create table customer (" +
             "customerID INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -71,8 +63,21 @@ public class DbStruct {
             "customerID INTEGER," +
             "date DATE," +
             "FOREIGN KEY (billID) REFERENCES bill (billID)," +
-            "FOREIGN KEY (userID) REFERENCES user (userID)," +
-            "FOREIGN KEY (tableID) REFERENCES tableRoom (tableID)," +
+            "FOREIGN KEY (userID) REFERENCES user (userID))";
+    public static final String CREATE_TABLE_ODER = "" +
+            "create table oder (" +
+            "oderID INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            "serviceID INTEGER," +
+            "quantity INTEGER," +
+            "FOREIGN KEY (serviceID) REFERENCES service (serviceID))";;
+    public static final String CREATE_TABLE_BILL ="" +
+            "create table bill (" +
+            "billID INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "totalMoney INTEGER," +
+            "note TEXT," +
+            "status INTEGER," +
+            "oderID INTEGER," +
+            "FOREIGN KEY (oderID) REFERENCES oder (oderID))"+
             "FOREIGN KEY (customerID) REFERENCES customer (customerID))";
     public static final String DROP_TABLE_BILLDetail = "" +
             "DROP TABLE IF EXISTS billDetail";
@@ -90,4 +95,6 @@ public class DbStruct {
             "DROP TABLE IF EXISTS customer";
     public static final String DROP_TABLE_SERVICE = "" +
             "DROP TABLE IF EXISTS service";
+    public static final String DROP_TABLE_ODER = "" +
+            "DROP TABLE IF EXISTS oder";
 }

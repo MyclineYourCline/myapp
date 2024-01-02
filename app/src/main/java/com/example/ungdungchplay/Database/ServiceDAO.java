@@ -5,10 +5,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.ParcelUuid;
 
+import com.example.ungdungchplay.InterfaceManager.OderFragmentInterFace;
 import com.example.ungdungchplay.InterfaceManager.SendData.OnDataLoadedListener;
 import com.example.ungdungchplay.ModelManager.Service;
 
@@ -113,6 +111,39 @@ public class ServiceDAO {
         }
         return list;
     }
+    // thu nghiem
+    @SuppressLint("Range")
+    public void getAsync3(String sql, OderFragmentInterFace oderFragmentInterFace, String...args) {
+        ExecutorService serviceLoadData = Executors.newSingleThreadExecutor();
+        serviceLoadData.execute(() -> {
+            List<Service> list = new ArrayList<>();
+            Cursor cursor = null;
+            try {
+                cursor = db.rawQuery(sql, args);
+                while (cursor.moveToNext()) {
+                    Service service = new Service();
+                    service.setId(cursor.getInt(cursor.getColumnIndex("serviceID")));
+                    service.setName(cursor.getString(cursor.getColumnIndex("name")));
+                    service.setPrice(cursor.getInt(cursor.getColumnIndex("price")));
+                    service.setCount(cursor.getInt(cursor.getColumnIndex("count")));
+                    service.setType(cursor.getInt(cursor.getColumnIndex("type")));
+                    service.setImageURi(cursor.getString(cursor.getColumnIndex("imageUri")));
+                    service.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+                    list.add(service);
+                }
+                oderFragmentInterFace.getDataSuccess(list);
+            } catch (Exception e) {
+                // Gửi thông báo lỗi về thông qua callback
+                oderFragmentInterFace.getDataError(e.getMessage());
+            } finally {
+                if (cursor != null && !cursor.isClosed()) {
+                    cursor.close();
+                }
+                // Đảm bảo ExecutorService được đóng sau khi công việc đã hoàn tất
+                serviceLoadData.shutdown();
+            }
+        });
+    }
 
     //
     public int deleteService (int id){
@@ -147,6 +178,12 @@ public class ServiceDAO {
     public Service queryByName (String queryName){
         String sql = "SELECT * FROM service WHERE name = ?";
         List<Service> list = getAsync(sql,queryName).join();
+        if (list.size() == 0) return null;
+        else  return  list.get(0);
+    }
+    public Service queryByID (int  id){
+        String sql = "SELECT * FROM service WHERE serviceID = ?";
+        List<Service> list = get(sql, String.valueOf(id));
         if (list.size() == 0) return null;
         else  return  list.get(0);
     }
