@@ -1,5 +1,6 @@
-package com.example.ungdungchplay.InterfaceManager;
+package com.example.ungdungchplay.InterfaceManager.FragmentInterface;
 
+import com.example.ungdungchplay.ModelManager.Oder;
 import com.example.ungdungchplay.ModelManager.Service;
 
 import java.util.List;
@@ -7,4 +8,7 @@ import java.util.List;
 public interface OderFragmentInterFace {
     void getDataSuccess(List<Service> list);
     void getDataError(String msg);
+    void oderSuccess (String msg);
+    void  oderError(String msg);
+
 }

@@ -1,17 +1,29 @@
 package com.example.ungdungchplay.ModelManager;
 
 public class Oder {
-    // "create table oder (" +
+    //  "create table oder (" +
     //            "oderID INTEGER PRIMARY KEY AUTOINCREMENT ," +
     //            "serviceID INTEGER," +
     //            "quantity INTEGER," +
+    //            "tableID TEXT," +
+    //            "FOREIGN KEY (tableID) REFERENCES tableRoom (tableID)," +
     //            "FOREIGN KEY (serviceID) REFERENCES service (serviceID))";;
     private int oderId, serviceID, quantity;
+    private String tableID;
 
-    public Oder(int oderId, int serviceID, int quantity) {
+    public String getTableID() {
+        return tableID;
+    }
+
+    public void setTableID(String tableID) {
+        this.tableID = tableID;
+    }
+
+    public Oder(int oderId, int serviceID, int quantity, String tableID) {
         this.oderId = oderId;
         this.serviceID = serviceID;
         this.quantity = quantity;
+        this.tableID = tableID;
     }
 
     public Oder() {

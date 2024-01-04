@@ -6,7 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.ungdungchplay.InterfaceManager.OderFragmentInterFace;
+import com.example.ungdungchplay.InterfaceManager.FragmentInterface.OderFragmentInterFace;
 import com.example.ungdungchplay.InterfaceManager.SendData.OnDataLoadedListener;
 import com.example.ungdungchplay.ModelManager.Service;
 

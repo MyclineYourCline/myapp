@@ -8,16 +8,8 @@ public class Bill {
     //            "note TEXT," +
     //            "status INTEGER," +
     //            "FOREIGN KEY (customerID) REFERENCES customer (id))";
-    private int id,customerID,totalMoney,status;
-    private String note;
-
-    public Bill(int id, int customerID, int totalMoney, int status, String note) {
-        this.id = id;
-        this.customerID = customerID;
-        this.totalMoney = totalMoney;
-        this.status = status;
-        this.note = note;
-    }
+    private int id,customerID,totalMoney,status, oderID;
+    private String note,tableID;
 
     public Bill() {
     }
@@ -54,11 +46,37 @@ public class Bill {
         this.status = status;
     }
 
+    public int getOderID() {
+        return oderID;
+    }
+
+    public void setOderID(int oderID) {
+        this.oderID = oderID;
+    }
+
     public String getNote() {
         return note;
     }
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getTableID() {
+        return tableID;
+    }
+
+    public void setTableID(String tableID) {
+        this.tableID = tableID;
+    }
+
+    public Bill(int id, int customerID, int totalMoney, int status, int oderID, String note, String tableID) {
+        this.id = id;
+        this.customerID = customerID;
+        this.totalMoney = totalMoney;
+        this.status = status;
+        this.oderID = oderID;
+        this.note = note;
+        this.tableID = tableID;
     }
 }

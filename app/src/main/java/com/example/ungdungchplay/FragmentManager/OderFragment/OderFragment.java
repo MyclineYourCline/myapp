@@ -2,11 +2,9 @@ package com.example.ungdungchplay.FragmentManager.OderFragment;
 
 import static android.util.Log.d;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -15,19 +13,18 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.bumptech.glide.Glide;
+import android.widget.Toast;
+
+import com.example.ungdungchplay.ActivityManager.OderActivity;
 import com.example.ungdungchplay.Adapter.OderAdapter;
 import com.example.ungdungchplay.Adapter.ServiceAdapter;
-import com.example.ungdungchplay.InterfaceManager.OderFragmentInterFace;
+import com.example.ungdungchplay.InterfaceManager.FragmentInterface.OderFragmentInterFace;
 import com.example.ungdungchplay.InterfaceManager.SendData.OderListener;
 import com.example.ungdungchplay.InterfaceManager.SendData.ServiceListener;
 import com.example.ungdungchplay.ModelManager.Oder;
@@ -39,8 +36,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class OderFragment extends Fragment implements View.OnClickListener, OderFragmentInterFace
 , ServiceListener , OderListener {
@@ -60,6 +55,7 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
     private Button btn_confirmOder;
     private Oder oder = null;
     private boolean checkOder = true;
+    private int totalMoney;
 
 
     @Override
@@ -89,6 +85,7 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
         serviceAdapter.setList(list);
         recyclerView_content.setAdapter(serviceAdapter);
         oderAdapter = new OderAdapter(getContext(),this );
+        btn_confirmOder.setOnClickListener(this);
         bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -112,13 +109,21 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
     @Override
     public void getDataSuccess(List<Service> list) {
         serviceAdapter.setList(list);
-//        recyclerView_bts.setAdapter(serviceAdapter);
-//        recyclerView_bts.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void getDataError(String msg) {
 
+    }
+
+    @Override
+    public void oderSuccess(String msg) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void oderError(String msg) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -180,9 +185,17 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 }
                 break;
-
+            case R.id.Layout_bts_cart_btn_total:
+                btn_confirmOderOnclick();
+                break;
         }
     }
+
+    private void btn_confirmOderOnclick() {
+        OderActivity oderActivity = (OderActivity) getActivity();
+        presenter.insertBill(listBts,totalMoney);
+    }
+
     private void btnMore(TextView txt_quantity, int price,TextView txt_total){
         int v = Integer.parseInt(txt_quantity.getText().toString().trim());
         v++;
@@ -205,6 +218,7 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
     public void changeOder(int totalQuantity, int totalMoney) {
         quantityOderItem.setText("Table oder: "+totalQuantity+" Item");
         btn_confirmOder.setText("Confirm and Oder: "+ formatPrice(String.valueOf(totalMoney))+" Vnd");
+        this.totalMoney = totalMoney;
     }
     private String formatPrice(String price){
         NumberFormat numberFormat = NumberFormat.getInstance();

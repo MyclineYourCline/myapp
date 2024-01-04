@@ -10,6 +10,7 @@ import com.example.ungdungchplay.ModelManager.Table;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class TableDAO {
     //"create table table (id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -30,7 +31,7 @@ public class TableDAO {
         Cursor cursor = db.rawQuery(sql,args);
         while (cursor.moveToNext()){
             Table table = new Table();
-            table.setId(cursor.getInt(cursor.getColumnIndex("id")));
+            table.setId(cursor.getString(cursor.getColumnIndex("tableID")));
             table.setRoomID(cursor.getInt(cursor.getColumnIndex("roomID")));
             table.setName(cursor.getString(cursor.getColumnIndex("name")));
             table.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
@@ -43,7 +44,9 @@ public class TableDAO {
         return get(sql);
     }
     public long insertTable (Table table){
+        UUID uuid = UUID.randomUUID();
         ContentValues values = new ContentValues();
+        values.put("tableID", uuid.toString());
         values.put("roomID",table.getRoomID());
         values.put("name",table.getName());
         values.put("status",table.getStatus());
@@ -63,7 +66,7 @@ public class TableDAO {
     }
     public int updateTable (Table table){
         ContentValues values = new ContentValues();
-        values.put("id",table.getId());
+        values.put("tableID",table.getId());
         values.put("roomID",table.getRoomID());
         values.put("name",table.getName());
         values.put("status",table.getStatus());
@@ -71,6 +74,6 @@ public class TableDAO {
                 new String[]{String.valueOf(table.getId())});
     }
     public int deleteTable  (int id){
-        return db.delete("tableRoom", "id = ?", new String[]{String.valueOf(id)});
+        return db.delete("tableRoom", "tableID = ?", new String[]{String.valueOf(id)});
     }
 }

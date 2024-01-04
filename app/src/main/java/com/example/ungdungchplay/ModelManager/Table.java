@@ -6,24 +6,24 @@ public class Table implements Serializable {
     public final static int TABLE_ACTIVE = 1;
     public final static int TABLE_EXISTS = 0;
 
-    private int id,roomID,status;
-    private String name;
+    private int roomID,status;
+    private String name,id;
 
     public Table() {
     }
 
-    public Table(int id, int roomID, String name, int status) {
+    public Table(String id, int roomID, String name, int status) {
         this.id = id;
         this.roomID = roomID;
         this.name = name;
         this.status = status;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

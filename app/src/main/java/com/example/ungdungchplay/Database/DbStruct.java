@@ -24,7 +24,8 @@ public class DbStruct {
             "roomID INTEGER PRIMARY KEY AUTOINCREMENT," +
             "name TEXT)";
     public static final String CREATE_TABLE_TABLE = "" +
-            "create table tableRoom (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "create table tableRoom (" +
+            "tableID TEXT PRIMARY KEY," +
             "roomID INTEGER," +
             "name TEXT," +
             "status INTEGER," +
@@ -59,7 +60,7 @@ public class DbStruct {
             "billDetailID INTEGER PRIMARY KEY AUTOINCREMENT," +
             "billID INTEGER," +
             "userID INTEGER," +
-            "tableID INTEGER," +
+            "tableID TEXT," +
             "customerID INTEGER," +
             "date DATE," +
             "FOREIGN KEY (billID) REFERENCES bill (billID)," +
@@ -69,6 +70,8 @@ public class DbStruct {
             "oderID INTEGER PRIMARY KEY AUTOINCREMENT ," +
             "serviceID INTEGER," +
             "quantity INTEGER," +
+            "tableID TEXT," +
+            "FOREIGN KEY (tableID) REFERENCES tableRoom (tableID)," +
             "FOREIGN KEY (serviceID) REFERENCES service (serviceID))";;
     public static final String CREATE_TABLE_BILL ="" +
             "create table bill (" +
@@ -77,8 +80,9 @@ public class DbStruct {
             "note TEXT," +
             "status INTEGER," +
             "oderID INTEGER," +
-            "FOREIGN KEY (oderID) REFERENCES oder (oderID))"+
-            "FOREIGN KEY (customerID) REFERENCES customer (customerID))";
+            "tableID TEXT," +
+            "FOREIGN KEY (oderID) REFERENCES oder (oderID),"+
+            "FOREIGN KEY (tableID) REFERENCES tableRoom (tableID))";
     public static final String DROP_TABLE_BILLDetail = "" +
             "DROP TABLE IF EXISTS billDetail";
     public static final String DROP_TABLE_detailSERVICE = "" +

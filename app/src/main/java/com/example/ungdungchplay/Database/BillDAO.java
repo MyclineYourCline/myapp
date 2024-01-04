@@ -34,34 +34,37 @@ public class BillDAO {
         cursor.moveToFirst();
         while (cursor.moveToNext()){
             Bill bill = new Bill();
-            bill.setId(cursor.getInt(cursor.getColumnIndex("id")));
-            bill.setCustomerID(cursor.getInt(cursor.getColumnIndex("customerID")));
+            bill.setId(cursor.getInt(cursor.getColumnIndex("billID")));
             bill.setTotalMoney(cursor.getInt(cursor.getColumnIndex("totalMoney")));
             bill.setNote(cursor.getString(cursor.getColumnIndex("note")));
             bill.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
+            bill.setOderID(cursor.getInt(cursor.getColumnIndex("oderID")));
+            bill.setTableID(cursor.getString(cursor.getColumnIndex("tableID")));
             list.add(bill);
         }
         return list;
     }
     public Long insertBill (Bill bill){
         ContentValues values = new ContentValues();
-        values.put("id", bill.getId());
-        values.put("customerID", bill.getCustomerID());
+
         values.put("totalMoney", bill.getTotalMoney());
         values.put("note", bill.getNote());
         values.put("status", bill.getStatus());
+        values.put("oderID", bill.getOderID());
+        values.put("tableID", bill.getTableID());
         return db.insert("bill",null,values);
     }
     public int deleteBill (int id){
-        return db.delete("bill","id = ?", new String[]{String.valueOf(id)});
+        return db.delete("bill","billID = ?", new String[]{String.valueOf(id)});
     }
     public int updateBill (Bill bill){
         ContentValues values = new ContentValues();
         values.put("id", bill.getId());
-        values.put("customerID", bill.getCustomerID());
+        values.put("oderID", bill.getOderID());
         values.put("totalMoney", bill.getTotalMoney());
         values.put("note", bill.getNote());
         values.put("status", bill.getStatus());
-        return db.update("Bill",values,"id =? ", new String[]{String.valueOf(bill.getId())});
+        values.put("tableID", bill.getTableID());
+        return db.update("Bill",values,"billID =? ", new String[]{String.valueOf(bill.getId())});
     }
 }

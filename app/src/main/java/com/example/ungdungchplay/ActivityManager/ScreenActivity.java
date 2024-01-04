@@ -54,6 +54,11 @@ public class ScreenActivity extends AppCompatActivity implements ScreenInterFace
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen);
+        //
+        SqlOpenHelper sqlOpenHelper = new SqlOpenHelper(this);
+        sqlOpenHelper.getWritableDatabase();
+        sqlOpenHelper.close();
+        //
         unitView();
         adapterScreen = new ViewPagerAdapterScreen(getSupportFragmentManager(),
                 FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);

@@ -31,6 +31,10 @@ public class OderActivity extends AppCompatActivity implements View.OnClickListe
     private ViewPager2 viewPager2;
     private ImageView img_back;
     private TextView txt_title;
+
+    public Table getTable() {
+        return table;
+    }
     private static final String[] TAB_TITLES = {"Oder", "Detail"};
 
 

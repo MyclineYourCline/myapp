@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class SqlOpenHelper extends SQLiteOpenHelper{
-    private final static String DB_NAME = "RESTOF";
+    private final static String DB_NAME = "ResTof";
     private final static int VERSION =  1;
 
     public SqlOpenHelper(@Nullable Context context) {
