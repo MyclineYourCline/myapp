@@ -12,6 +12,7 @@
     >
     <RelativeLayout
         android:id="@+id/R1"
+        android:paddingHorizontal="4dp"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize">

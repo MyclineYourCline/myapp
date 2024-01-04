@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:stretchColumns="6">
+    <TableRow
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/item_oder_detail_txtName"
+            android:layout_weight="1"
+            android:text="apple"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/item_oder_detail_txtQuantity"
+            android:layout_weight="1"
+            android:text="2"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/item_oder_detail_txtPrice"
+            android:layout_weight="1"
+            android:text="50000"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/item_oder_detail_txtTotal"
+            android:layout_weight="1"
+            android:text="100000"
+            android:padding="3dip" />
+        <ImageView
+            android:id="@+id/item_oder_detail_ImgEdit"
+            android:stateListAnimator="@animator/btn_click_animator"
+            android:src="@drawable/baseline_edit_note_24"
+            android:padding="3dip" />
+    </TableRow>
+</TableLayout>
