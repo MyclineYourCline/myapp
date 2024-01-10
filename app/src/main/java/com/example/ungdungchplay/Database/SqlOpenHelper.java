@@ -23,7 +23,6 @@ public class SqlOpenHelper extends SQLiteOpenHelper{
         db.execSQL(DbStruct.CREATE_TABLE_TABLE);
         db.execSQL(DbStruct.CREATE_TABLE_SERVICE);
         db.execSQL(DbStruct.CREATE_TABLE_detailSERVICE);
-        db.execSQL(DbStruct.CREATE_TABLE_BILLDetail);
         db.execSQL(DbStruct.CREATE_TABLE_ODER);
     }
 
@@ -36,7 +35,6 @@ public class SqlOpenHelper extends SQLiteOpenHelper{
         db.execSQL(DbStruct.DROP_TABLE_ROOM);
         db.execSQL(DbStruct.DROP_TABLE_TABLE);
         db.execSQL(DbStruct.DROP_TABLE_SERVICE);
-        db.execSQL(DbStruct.DROP_TABLE_detailSERVICE);
         db.execSQL(DbStruct.DROP_TABLE_ODER);
         onCreate(db);
     }

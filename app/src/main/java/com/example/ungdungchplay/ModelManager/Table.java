@@ -7,6 +7,17 @@ public class Table implements Serializable {
     public final static int TABLE_EXISTS = 0;
 
     private int roomID,status;
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "roomID=" + roomID +
+                ", status=" + status +
+                ", name='" + name + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
+
     private String name,id;
 
     public Table() {

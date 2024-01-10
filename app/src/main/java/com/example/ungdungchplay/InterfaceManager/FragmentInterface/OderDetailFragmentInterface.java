@@ -7,6 +7,8 @@ import java.util.List;
 public interface OderDetailFragmentInterface {
     void getDataSuccess(String msg, List<Oder> list);
     void getDataError (String msq);
-    void payMenSuccess(String msg);
-    void PayMenError (String msg);
+    void paymentSuccess(String msg);
+    void PaymentError (String msg);
+    void updateSuccess (String msg, List<Oder> list);
+    void  updateError(String msg);
 }

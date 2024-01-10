@@ -16,4 +16,8 @@
     <string name="get_started">Get started</string>
     <string name="rationale_title">pTitle</string>
     <string name="rationale_message">ad</string>
+    <string name="update_oder">update oder</string>
+    <string name="quantity">Quantity</string>
+    <string name="price">Price</string>
+    <string name="total">Total</string>
 </resources>

@@ -71,6 +71,9 @@ public class OderActivity extends AppCompatActivity implements View.OnClickListe
         }).attach();
         //
     }
+    public  void  openDetailTab (){
+        viewPager2.setCurrentItem(2);
+    }
 
     @Override
     public void onClick(View v) {

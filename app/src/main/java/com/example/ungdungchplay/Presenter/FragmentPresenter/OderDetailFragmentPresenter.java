@@ -26,4 +26,27 @@ public class OderDetailFragmentPresenter {
         }
         oderDetailFragmentInterface.getDataSuccess("get Data success", list);
     }
+    public void updateOder (int option,Oder oder,int Status, String tableID){
+        if (option ==1){
+            try {
+                oderDAO.updateOder(oder);
+                List<Oder> list = oderDAO.queryByStatusAndTableID(Status,tableID);
+                oderDetailFragmentInterface.updateSuccess("Update Success !",list);
+            }
+            catch (Exception x){
+                oderDetailFragmentInterface.updateError(x.toString());
+            }
+        }
+        else{
+            try{
+                oderDAO.deleteOder(oder);
+                List<Oder> list = oderDAO.queryByStatusAndTableID(Status,tableID);
+                oderDetailFragmentInterface.updateSuccess("Delete Success !",list);
+            }
+            catch (Exception x){
+                oderDetailFragmentInterface.updateError(x.toString());
+            }
+        }
+
+    }
 }

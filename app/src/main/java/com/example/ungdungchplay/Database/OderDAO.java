@@ -12,7 +12,7 @@ import com.example.ungdungchplay.ModelManager.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OderDAO {
+public class  OderDAO {
     public static final int Pay = -1;
     private SqlOpenHelper helper;
     private SQLiteDatabase database;
@@ -66,7 +66,9 @@ public class OderDAO {
     }
     public Oder queryByServiceIdAndTableIdAndStatus(String tableID, int status, int serviceID){
         String sql = "SELECT * FROM oder WHERE tableID = ? and status = ? and serviceID = ?";
-        return get(sql,new String[]{tableID,String.valueOf(status),String.valueOf(serviceID)}).get(0);
+        List<Oder> list = get(sql,new String[]{tableID,String.valueOf(status),String.valueOf(serviceID)});
+        if (list.size() != 0) return list.get(0);
+        else  return null;
     }
     public int updateOder(Oder oder){
         ContentValues values = new ContentValues();
@@ -76,6 +78,10 @@ public class OderDAO {
         values.put("tableID",oder.getTableID());
         values.put("status",oder.getStatus());
         return database.update("oder", values,"OderID = ?",
+                new String[]{String.valueOf(oder.getOderId())});
+    }
+    public int deleteOder (Oder oder){
+        return database.delete("oder","oderID = ?",
                 new String[]{String.valueOf(oder.getOderId())});
     }
 }

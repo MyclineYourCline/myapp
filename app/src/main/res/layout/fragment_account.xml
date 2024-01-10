@@ -44,7 +44,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorBackGround_btn">
                 <TextView
-                    android:text="Welcome to my Res"
+                    android:text="Hi Chung"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:layout_width="match_parent"
@@ -56,7 +56,6 @@
                     <TextView
                         android:text="TK:"
                         android:gravity="center_vertical"
-                        android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_width="wrap_content"

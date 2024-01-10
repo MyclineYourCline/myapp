@@ -1,5 +1,7 @@
 package com.example.ungdungchplay.Adapter;
 
+import static android.util.Log.d;
+
 import android.content.Context;
 import android.text.Layout;
 import android.view.LayoutInflater;

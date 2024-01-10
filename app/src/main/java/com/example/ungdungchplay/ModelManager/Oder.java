@@ -6,12 +6,15 @@ public class Oder {
     //            "serviceID INTEGER," +
     //            "quantity INTEGER," +
     //            "FOREIGN KEY (serviceID) REFERENCES service (serviceID))";;
-    private int oderId, serviceID, quantity;
+    private int oderId, serviceID, quantity,status;
+    private String tableID;
 
-    public Oder(int oderId, int serviceID, int quantity) {
+    public Oder(int oderId, int serviceID, int quantity, int status, String tableID) {
         this.oderId = oderId;
         this.serviceID = serviceID;
         this.quantity = quantity;
+        this.status = status;
+        this.tableID = tableID;
     }
 
     public Oder() {
@@ -39,5 +42,35 @@ public class Oder {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getTableID() {
+        return tableID;
+    }
+
+    public void setTableID(String tableID) {
+        this.tableID = tableID;
+    }
+    public int getTotalMoney(Service service){
+        return quantity * service.getPrice();
+    }
+
+    @Override
+    public String toString() {
+        return "Oder{" +
+                "oderId=" + oderId +
+                ", serviceID=" + serviceID +
+                ", quantity=" + quantity +
+                ", status=" + status +
+                ", tableID='" + tableID + '\'' +
+                '}';
     }
 }

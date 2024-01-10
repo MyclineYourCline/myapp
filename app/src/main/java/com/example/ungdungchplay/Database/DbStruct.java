@@ -24,7 +24,7 @@ public class DbStruct {
             "roomID INTEGER PRIMARY KEY AUTOINCREMENT," +
             "name TEXT)";
     public static final String CREATE_TABLE_TABLE = "" +
-            "create table tableRoom (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "create table tableRoom (tableID TEXT PRIMARY KEY," +
             "roomID INTEGER," +
             "name TEXT," +
             "status INTEGER," +
@@ -54,22 +54,15 @@ public class DbStruct {
             "price INTEGER," +
             "FOREIGN KEY (serviceID) REFERENCES service (serviceID)," +
             "FOREIGN KEY (billID) REFERENCES bill (billID))";
-    public static final String CREATE_TABLE_BILLDetail = "" +
-            "create table billDetail (" +
-            "billDetailID INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "billID INTEGER," +
-            "userID INTEGER," +
-            "tableID INTEGER," +
-            "customerID INTEGER," +
-            "date DATE," +
-            "FOREIGN KEY (billID) REFERENCES bill (billID)," +
-            "FOREIGN KEY (userID) REFERENCES user (userID))";
     public static final String CREATE_TABLE_ODER = "" +
             "create table oder (" +
             "oderID INTEGER PRIMARY KEY AUTOINCREMENT ," +
             "serviceID INTEGER," +
             "quantity INTEGER," +
-            "FOREIGN KEY (serviceID) REFERENCES service (serviceID))";;
+            "tableID TEXT," +
+            "status INTEGER," +
+            "FOREIGN KEY (tableID) REFERENCES tableRoom (tableID),"+
+            "FOREIGN KEY (serviceID) REFERENCES service (serviceID))";
     public static final String CREATE_TABLE_BILL ="" +
             "create table bill (" +
             "billID INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -77,8 +70,7 @@ public class DbStruct {
             "note TEXT," +
             "status INTEGER," +
             "oderID INTEGER," +
-            "FOREIGN KEY (oderID) REFERENCES oder (oderID))"+
-            "FOREIGN KEY (customerID) REFERENCES customer (customerID))";
+            "FOREIGN KEY (oderID) REFERENCES oder (oderID))";
     public static final String DROP_TABLE_BILLDetail = "" +
             "DROP TABLE IF EXISTS billDetail";
     public static final String DROP_TABLE_detailSERVICE = "" +
@@ -88,7 +80,7 @@ public class DbStruct {
     public static final String DROP_TABLE_ROOM = "" +
             "DROP TABLE IF EXISTS room";
     public static final String DROP_TABLE_TABLE = "" +
-            "DROP TABLE IF EXISTS table";
+            "DROP TABLE IF EXISTS tableRoom";
     public static final String DROP_TABLE_BILL = "" +
             "DROP TABLE IF EXISTS bill";
     public static final String DROP_TABLE_CUSTOMER = "" +

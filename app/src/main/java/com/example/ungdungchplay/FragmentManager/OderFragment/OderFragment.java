@@ -56,7 +56,7 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
     private Oder oder = null;
     private boolean checkOder = true;
     private int totalMoney;
-
+    private OderActivity oderActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,6 +71,7 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
         return view;
     }
     private void unitUI(){
+        oderActivity = (OderActivity) getActivity();
         presenter = new OderFragmentPresenter(this,getContext());
         txt_detail = view.findViewById(R.id.Layout_bts_cart_txt_detail);
         l_bts = view.findViewById(R.id.Layout_bts_cart_l);
@@ -117,8 +118,12 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
     }
 
     @Override
-    public void oderSuccess(String msg) {
+    public void oderSuccess(String msg, List<Oder> list) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+        listBts.clear();
+        oderAdapter.setList(listBts);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        oderActivity.openDetailTab();
     }
 
     @Override
@@ -143,6 +148,7 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
                     if (listBts.size() == 0){
                         oder = new Oder();
                         oder.setServiceID(service.getId());
+                        oder.setTableID(oderActivity.getTable().getId());
                         oder.setQuantity(1);
                         listBts.add(oder);
                     }
@@ -160,6 +166,7 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
                         if (checkOder){
                             oder = new Oder();
                             oder.setServiceID(service.getId());
+                            oder.setTableID(oderActivity.getTable().getId());
                             oder.setQuantity(1);
                             listBts.add(oder);
                         }
@@ -193,7 +200,7 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
 
     private void btn_confirmOderOnclick() {
         OderActivity oderActivity = (OderActivity) getActivity();
-        presenter.insertBill(listBts,totalMoney);
+        presenter.insertOder(listBts,oderActivity.getTable().getId());
     }
 
     private void btnMore(TextView txt_quantity, int price,TextView txt_total){
@@ -220,6 +227,12 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
         btn_confirmOder.setText("Confirm and Oder: "+ formatPrice(String.valueOf(totalMoney))+" Vnd");
         this.totalMoney = totalMoney;
     }
+
+    @Override
+    public void clickEdit(Oder oder) {
+
+    }
+
     private String formatPrice(String price){
         NumberFormat numberFormat = NumberFormat.getInstance();
         double fDouble = Double.parseDouble(price);

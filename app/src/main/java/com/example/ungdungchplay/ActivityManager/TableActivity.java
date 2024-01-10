@@ -173,7 +173,8 @@ public class TableActivity extends AppCompatActivity implements TableActivityInt
                 table.setRoomID(room.getId());
                 table.setName(edt_name.getText().toString().trim());
                 table.setStatus(Table.TABLE_EXISTS);
-                presenter.addTable(table, room.getId());
+                d("ca" + "chung", "onClick: "+room.getId());
+                presenter.addTable(table,room.getId());
                 dialog.cancel();
             }
         });

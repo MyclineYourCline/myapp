@@ -1,5 +1,7 @@
 package com.example.ungdungchplay.Presenter.ActivityPresenter;
 
+import static android.util.Log.d;
+
 import android.content.Context;
 
 import com.example.ungdungchplay.Database.DbStruct;

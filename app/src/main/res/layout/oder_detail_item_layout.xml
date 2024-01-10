@@ -8,24 +8,21 @@
         android:gravity="center_vertical">
         <TextView
             android:id="@+id/item_oder_detail_txtName"
-            android:layout_weight="1"
-            android:text="apple"
-            android:padding="3dip" />
+            android:width="0dp"
+            android:layout_weight="1"/>
         <TextView
             android:id="@+id/item_oder_detail_txtQuantity"
+            android:width="0dp"
             android:layout_weight="1"
-            android:text="2"
-            android:padding="3dip" />
+            />
         <TextView
             android:id="@+id/item_oder_detail_txtPrice"
-            android:layout_weight="1"
-            android:text="50000"
-            android:padding="3dip" />
+            android:width="0dp"
+            android:layout_weight="1"/>
         <TextView
             android:id="@+id/item_oder_detail_txtTotal"
-            android:layout_weight="1"
-            android:text="100000"
-            android:padding="3dip" />
+            android:width="0dp"
+            android:layout_weight="1"/>
         <ImageView
             android:id="@+id/item_oder_detail_ImgEdit"
             android:stateListAnimator="@animator/btn_click_animator"
