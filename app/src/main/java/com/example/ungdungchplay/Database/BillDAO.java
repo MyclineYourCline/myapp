@@ -39,32 +39,35 @@ public class BillDAO {
             bill.setNote(cursor.getString(cursor.getColumnIndex("note")));
             bill.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
             bill.setOderID(cursor.getInt(cursor.getColumnIndex("oderID")));
-            bill.setTableID(cursor.getString(cursor.getColumnIndex("tableID")));
+            bill.setDate(cursor.getString(cursor.getColumnIndex("date")));
             list.add(bill);
         }
         return list;
     }
     public Long insertBill (Bill bill){
         ContentValues values = new ContentValues();
-
+        values.put("date", bill.getDate());
         values.put("totalMoney", bill.getTotalMoney());
         values.put("note", bill.getNote());
         values.put("status", bill.getStatus());
         values.put("oderID", bill.getOderID());
-        values.put("tableID", bill.getTableID());
         return db.insert("bill",null,values);
     }
     public int deleteBill (int id){
         return db.delete("bill","billID = ?", new String[]{String.valueOf(id)});
     }
+    public List<Bill> getAll (){
+      String sql = "SELECT * FROM bill";
+      return get(sql);
+    }
     public int updateBill (Bill bill){
         ContentValues values = new ContentValues();
-        values.put("id", bill.getId());
+        values.put("billID", bill.getId());
+        values.put("date", bill.getDate());
         values.put("oderID", bill.getOderID());
         values.put("totalMoney", bill.getTotalMoney());
         values.put("note", bill.getNote());
         values.put("status", bill.getStatus());
-        values.put("tableID", bill.getTableID());
         return db.update("Bill",values,"billID =? ", new String[]{String.valueOf(bill.getId())});
     }
 }

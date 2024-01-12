@@ -2,6 +2,7 @@ package com.example.ungdungchplay.FragmentManager.OderFragment;
 
 import static android.util.Log.d;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -119,11 +120,9 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
 
     @Override
     public void oderSuccess(String msg, List<Oder> list) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-        listBts.clear();
-        oderAdapter.setList(listBts);
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        oderActivity.openDetailTab();
+
+        showDiaLogSuccess(msg);
+
     }
 
     @Override
@@ -238,5 +237,26 @@ public class OderFragment extends Fragment implements View.OnClickListener, Oder
         double fDouble = Double.parseDouble(price);
         String fPrice = numberFormat.format(fDouble);
         return fPrice;
+    }
+    private void showDiaLogSuccess (String msg){
+        Dialog dialog = new Dialog(getContext(),
+                androidx.appcompat.R.style.Theme_AppCompat_DayNight_Dialog_Alert);
+        dialog.setContentView(R.layout.dialog_success);
+
+        TextView txt_msg = dialog.findViewById(R.id.dialog_success_txt_msg);
+        txt_msg.setText(msg);
+        Button btn_oce = dialog.findViewById(R.id.dialog_success_btn_oce);
+        btn_oce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listBts.clear();
+                oderAdapter.setList(listBts);
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                oderActivity.openDetailTab();
+                dialog.cancel();
+            }
+        });
+        dialog.show();
+
     }
 }

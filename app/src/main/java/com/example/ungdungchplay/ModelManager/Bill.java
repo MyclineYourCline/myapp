@@ -1,17 +1,34 @@
 package com.example.ungdungchplay.ModelManager;
 
 public class Bill {
-    // "create table bill (" +
-    //            "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-    //            "customerID INTEGER," +
+   // "create table bill (" +
+    //            "billID INTEGER PRIMARY KEY AUTOINCREMENT," +
     //            "totalMoney INTEGER," +
     //            "note TEXT," +
     //            "status INTEGER," +
-    //            "FOREIGN KEY (customerID) REFERENCES customer (id))";
-    private int id,customerID,totalMoney,status, oderID;
-    private String note,tableID;
+    //            "oderID INTEGER," +
+    //            "FOREIGN KEY (oderID) REFERENCES oder (oderID))";
+    private int id,totalMoney,status,oderID;
+    private String note,date;
 
     public Bill() {
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Bill(int id, int totalMoney, int status, int oderID, String note, String date) {
+        this.id = id;
+        this.totalMoney = totalMoney;
+        this.status = status;
+        this.oderID = oderID;
+        this.note = note;
+        this.date = date;
     }
 
     public int getId() {
@@ -20,14 +37,6 @@ public class Bill {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
     }
 
     public int getTotalMoney() {
@@ -60,23 +69,5 @@ public class Bill {
 
     public void setNote(String note) {
         this.note = note;
-    }
-
-    public String getTableID() {
-        return tableID;
-    }
-
-    public void setTableID(String tableID) {
-        this.tableID = tableID;
-    }
-
-    public Bill(int id, int customerID, int totalMoney, int status, int oderID, String note, String tableID) {
-        this.id = id;
-        this.customerID = customerID;
-        this.totalMoney = totalMoney;
-        this.status = status;
-        this.oderID = oderID;
-        this.note = note;
-        this.tableID = tableID;
     }
 }

@@ -49,6 +49,13 @@ public class RoomDAO {
         if (list.size() == 0)  return null;
         else return list;
     }
+    public Room queryById (String id){
+        String sql = "SELECT * FROM room Where roomID = ?";
+        List<Room> list = get(sql,id);
+        if (list.size() == 0) return null;
+        else return list.get(0);
+    }
+
     public int updateRoom(Room room){
         ContentValues values = new ContentValues();
         values.put("roomID", room.getId());

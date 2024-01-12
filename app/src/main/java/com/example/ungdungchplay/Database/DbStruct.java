@@ -7,6 +7,7 @@ public class DbStruct {
     public static final int ERR = 0;
     public static final int ITEM_CLICK = 0;
     public static final int ITEM_LONG_CLICK = 1;
+    public static final int BILL_STATUS_ISPAYMENT = 1;
     public static final String MESSAGE_ERR = "Data error";
 
 
@@ -60,17 +61,20 @@ public class DbStruct {
             "serviceID INTEGER," +
             "quantity INTEGER," +
             "tableID TEXT," +
+            "billID INTEGER," +
             "status INTEGER," +
             "FOREIGN KEY (tableID) REFERENCES tableRoom (tableID),"+
+            "FOREIGN KEY (billID) REFERENCES bill (billID),"+
             "FOREIGN KEY (serviceID) REFERENCES service (serviceID))";
+
     public static final String CREATE_TABLE_BILL ="" +
             "create table bill (" +
-            "billID INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "billID TEXT PRIMARY KEY," +
             "totalMoney INTEGER," +
             "note TEXT," +
             "status INTEGER," +
             "oderID INTEGER," +
-            "FOREIGN KEY (oderID) REFERENCES oder (oderID))";
+            "date TEXT)";
     public static final String DROP_TABLE_BILLDetail = "" +
             "DROP TABLE IF EXISTS billDetail";
     public static final String DROP_TABLE_detailSERVICE = "" +

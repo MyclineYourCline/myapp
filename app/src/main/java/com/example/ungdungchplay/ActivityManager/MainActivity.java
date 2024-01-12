@@ -4,29 +4,19 @@ import static android.util.Log.d;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.example.ungdungchplay.FragmentManager.HomeFragment.AccountFragment;
-import com.example.ungdungchplay.FragmentManager.HomeFragment.ActiveFragment;
+import com.example.ungdungchplay.FragmentManager.HomeFragment.BillFragment;
 import com.example.ungdungchplay.FragmentManager.HomeFragment.HomeFragment;
 import com.example.ungdungchplay.R;
-import com.example.ungdungchplay.ViewPagerManager.ViewPagerAdapterService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigationView;
@@ -54,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case R.id.menu_nav_tableActive:
                             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                            fragmentTransaction.replace(R.id.Main_container, new ActiveFragment());
+                            fragmentTransaction.replace(R.id.Main_container, new BillFragment());
                             fragmentTransaction.commit();
                             break;
                         case R.id.menu_nav_account:

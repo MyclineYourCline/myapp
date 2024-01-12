@@ -6,7 +6,7 @@
         />
     <item android:id="@+id/menu_nav_tableActive"
         android:icon="@drawable/baseline_pending_actions_24"
-        android:title="Đang hoạt động"
+        android:title="Hóa đơn"
         />
     <item android:id="@+id/menu_nav_warehouse"
         android:icon="@drawable/baseline_shopping_cart_24"

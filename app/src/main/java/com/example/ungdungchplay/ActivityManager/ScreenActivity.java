@@ -30,6 +30,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ungdungchplay.AnimationTranformer.ZoomOutPageTransformer;
 import com.example.ungdungchplay.Database.SqlOpenHelper;
 import com.example.ungdungchplay.InterfaceManager.ActivityInterface.ScreenInterFace;
 import com.example.ungdungchplay.Presenter.ActivityPresenter.ScreenPresenter;

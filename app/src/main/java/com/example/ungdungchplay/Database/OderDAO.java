@@ -54,6 +54,14 @@ public class  OderDAO {
         String sql = "SELECT * FROM oder WHERE tableID = ?";
         return get(sql,tableID);
     }
+    public Oder getByID (String id){
+        String sql = "SELECT * FROM oder WHERE oderID = ?";
+        return get(sql,id).get(0);
+    }
+    public List<Oder> getListByID (String id){
+        String sql = "SELECT * FROM oder WHERE oderID = ?";
+        return get(sql,id);
+    }
     public List<Oder> queryByStatusAndTableID(int status,String taleID){
         String sql = "SELECT * FROM oder WHERE status = ? and tableID = ?";
         return get(sql,new String[]{String.valueOf(status),taleID});

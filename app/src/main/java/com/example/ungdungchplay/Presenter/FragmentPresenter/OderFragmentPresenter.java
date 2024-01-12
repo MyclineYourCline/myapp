@@ -8,9 +8,11 @@ import com.example.ungdungchplay.Database.BillDAO;
 import com.example.ungdungchplay.Database.DbStruct;
 import com.example.ungdungchplay.Database.OderDAO;
 import com.example.ungdungchplay.Database.ServiceDAO;
+import com.example.ungdungchplay.Database.TableDAO;
 import com.example.ungdungchplay.InterfaceManager.FragmentInterface.OderFragmentInterFace;
 import com.example.ungdungchplay.ModelManager.Bill;
 import com.example.ungdungchplay.ModelManager.Oder;
+import com.example.ungdungchplay.ModelManager.Table;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +22,14 @@ public class OderFragmentPresenter {
     private Context context;
     private ServiceDAO serviceDAO;
     private OderDAO oderDAO;
+    private TableDAO tableDAO;
 
     public OderFragmentPresenter(OderFragmentInterFace oderFragmentInterFace, Context context) {
         this.oderFragmentInterFace = oderFragmentInterFace;
         this.context = context;
         serviceDAO = new ServiceDAO(context);
         oderDAO = new OderDAO(context);
+        tableDAO = new TableDAO(context);
     }
 
     public void getData() {
@@ -49,6 +53,10 @@ public class OderFragmentPresenter {
                 oderDAO.updateOder(oder);
             }
         }
+        Table table = tableDAO.getByID(tableID);
+        table.setStatus(1);
+        tableDAO.updateTable(table);
+
         oderFragmentInterFace.oderSuccess("Oder success !", new ArrayList<>());
     }
 }

@@ -20,9 +20,11 @@ import android.widget.Toast;
 
 import com.example.ungdungchplay.ActivityManager.OderActivity;
 import com.example.ungdungchplay.Adapter.OderDetailAdapter;
+import com.example.ungdungchplay.Database.DbStruct;
 import com.example.ungdungchplay.Database.ServiceDAO;
 import com.example.ungdungchplay.InterfaceManager.FragmentInterface.OderDetailFragmentInterface;
 import com.example.ungdungchplay.InterfaceManager.SendData.OderListener;
+import com.example.ungdungchplay.ModelManager.Bill;
 import com.example.ungdungchplay.ModelManager.Oder;
 import com.example.ungdungchplay.ModelManager.Service;
 import com.example.ungdungchplay.Presenter.FragmentPresenter.OderDetailFragmentPresenter;
@@ -30,10 +32,14 @@ import com.example.ungdungchplay.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
-public class OderDetailFragment extends Fragment implements OderListener, OderDetailFragmentInterface{
+public class OderDetailFragment extends Fragment implements OderListener,
+        OderDetailFragmentInterface, View.OnClickListener{
     private View view;
     private RecyclerView rcv;
     private OderDetailAdapter adapter;
@@ -41,7 +47,8 @@ public class OderDetailFragment extends Fragment implements OderListener, OderDe
     private TextView txt_total;
     private OderDetailFragmentPresenter presenter;
     private OderActivity oderActivity;
-    private Button btn_pay;private List<Oder> list = new ArrayList<>();
+    private Button btn_pay;
+    private List<Oder> list = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,11 +68,10 @@ public class OderDetailFragment extends Fragment implements OderListener, OderDe
         adapter = new OderDetailAdapter(getContext(), this);
         adapter.setList(list);
         rcv.setAdapter(adapter);
+        btn_pay.setOnClickListener(this);
     }
-
     @Override
     public void changeOder(int totalQuantity, int totalMoney) {
-
     }
 
     @Override
@@ -122,7 +128,6 @@ public class OderDetailFragment extends Fragment implements OderListener, OderDe
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
-
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().isEmpty()){
@@ -136,10 +141,10 @@ public class OderDetailFragment extends Fragment implements OderListener, OderDe
         });
         dialog.show();
     }
-
     @Override
     public void getDataSuccess(String msg, List<Oder> list) {
         ServiceDAO serviceDAO = new ServiceDAO(getContext());
+        this.list = list;
         adapter.setList(list);
         updateTotalMoney(list);
     }
@@ -151,24 +156,28 @@ public class OderDetailFragment extends Fragment implements OderListener, OderDe
 
     @Override
     public void paymentSuccess(String msg) {
-
+        this.list.clear();
+        adapter.setList(list);
+        updateTotalMoney(list);
+        showDiaLogSuccess(msg);
+        edt_note.setText("");
     }
-
     @Override
     public void PaymentError(String msg) {
-
+       showDiaLogSuccess(msg);
     }
 
     @Override
     public void updateSuccess(String msg, List<Oder> list) {
+        this.list = list;
         adapter.setList(list);
         updateTotalMoney(list);
-        Toast.makeText(oderActivity, msg, Toast.LENGTH_SHORT).show();
+        showDiaLogSuccess(msg);
     }
 
     @Override
     public void updateError(String msg) {
-
+        Toast.makeText(oderActivity, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -194,8 +203,54 @@ public class OderDetailFragment extends Fragment implements OderListener, OderDe
         txt_total.setText(totalMoneyS +" Vnd");
     }
     private static String removeCommas(String input) {
-        // Loại bỏ dấu phẩy từ chuỗi
         String stringWithoutCommas = input.replaceAll(",", "");
         return stringWithoutCommas;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.OderDetailFragment_btn_pay:
+                checkOutOnclick();
+                break;
+            default:
+                break;
+        }
+    }
+    private void checkOutOnclick (){
+        ServiceDAO serviceDAO = new ServiceDAO(getContext());
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/yy hh:mm");
+        String dateS = dateFormat.format(date);
+        //
+        List<Bill> listBill = new ArrayList<>();
+        for (Oder x: list){
+            Bill bill = new Bill();
+            Service service = serviceDAO.queryByID(x.getServiceID());
+            bill.setTotalMoney(x.getTotalMoney(service));
+            bill.setNote(edt_note.getText().toString().trim());
+            bill.setStatus(DbStruct.BILL_STATUS_ISPAYMENT);
+            bill.setOderID(x.getOderId());
+            bill.setDate(dateS);
+            listBill.add(bill);
+        }
+        presenter.checkOut(listBill,oderActivity.getTable().getId());
+    }
+    private void showDiaLogSuccess (String msg){
+        Dialog dialog = new Dialog(getContext(),
+                androidx.appcompat.R.style.Theme_AppCompat_DayNight_Dialog_Alert);
+        dialog.setContentView(R.layout.dialog_success);
+        TextView txt_msg = dialog.findViewById(R.id.dialog_success_txt_msg);
+        txt_msg.setText(msg);
+        Button btn_oce = dialog.findViewById(R.id.dialog_success_btn_oce);
+        btn_oce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+        dialog.show();
+
     }
 }

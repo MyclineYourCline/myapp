@@ -58,6 +58,12 @@ public class TableDAO {
         if (list.size() ==  0) return null;
         else return list.get(0);
     }
+    public Table getByID(String id){
+        String sql = "SELECT * FROM tableRoom WHERE tableID = ?";
+        List<Table> list = get(sql,id);
+        if (list.size() ==  0) return null;
+        else return list.get(0);
+    }
     public List<Table> getByRoomID(int roomID){
         String sql = "SELECT * FROM tableRoom WHERE roomID = ?";
         List<Table> list = get(sql,String.valueOf(roomID));
@@ -70,7 +76,7 @@ public class TableDAO {
         values.put("roomID",table.getRoomID());
         values.put("name",table.getName());
         values.put("status",table.getStatus());
-        return db.update("tableRoom", values, "id = ?",
+        return db.update("tableRoom", values, "tableID = ?",
                 new String[]{String.valueOf(table.getId())});
     }
     public int deleteTable  (int id){

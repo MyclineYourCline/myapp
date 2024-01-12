@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,12 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
         if (table == null){
             return;
         }
+        if (table.getStatus() != 0){
+            holder.item_bg.setBackgroundResource(R.color.colorBackGround_btn);
+        }
+        else{
+            holder.item_bg.setBackgroundResource(R.color.white);
+        }
         holder.txt_name.setText(table.getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,9 +77,11 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.TableViewHol
     }
     public class TableViewHolder extends RecyclerView.ViewHolder{
         private TextView txt_name;
+        private LinearLayout item_bg;
         public TableViewHolder(@NonNull View itemView) {
             super(itemView);
             txt_name = itemView.findViewById(R.id.itemTable_txtName);
+            item_bg = itemView.findViewById(R.id.itemTable_bg);
         }
     }
     @Override
